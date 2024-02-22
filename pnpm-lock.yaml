@@ -73,7 +73,7 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
 
-  apps/web:
+  apps/srish:
     dependencies:
       '@repo/ui':
         specifier: workspace:*
