@@ -10,6 +10,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@plaiceholder/next": "^3.0.0",
     "@repo/components": "workspace:*",
     "@repo/utils": "workspace:*",
     "next": "^14.1.0",
