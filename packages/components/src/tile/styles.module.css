@@ -1,0 +1,47 @@
+@tailwind components;
+@tailwind utilities;
+
+.tile {
+  --radius: 60px;
+  --angle: 1rad;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
+  @apply relative flex flex-col justify-between bg-white bg-opacity-30 backdrop-blur-sm dark:border-dark-cobalt dark:bg-black dark:bg-opacity-10 dark:backdrop-blur-sm;
+}
+
+.tileBorder {
+  position: absolute;
+  inset: -1px;
+  border: 1px solid #0000;
+  border-radius: calc(1px + var(--radius));
+  transform: translateZ(-1px);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.tileBorder::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: calc(1px + var(--radius));
+  background: linear-gradient(
+    var(--angle),
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.3)
+  );
+}
+
+.imageWrapper {
+  height: 320px;
+  border-bottom-right-radius: calc(var(--radius) - 1px);
+  border-bottom-left-radius: calc(var(--radius) - 1px);
+  @apply overflow-hidden pl-10;
+}
