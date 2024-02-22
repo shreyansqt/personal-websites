@@ -26,9 +26,9 @@ importers:
 
   apps/shreyans:
     dependencies:
-      '@repo/ui':
+      '@repo/components':
         specifier: workspace:*
-        version: link:../../packages/ui
+        version: link:../../packages/components
       next:
         specifier: ^14.0.4
         version: 14.0.4(react-dom@18.2.0)(react@18.2.0)
@@ -75,9 +75,9 @@ importers:
 
   apps/srish:
     dependencies:
-      '@repo/ui':
+      '@repo/components':
         specifier: workspace:*
-        version: link:../../packages/ui
+        version: link:../../packages/components
       next:
         specifier: ^14.0.4
         version: 14.0.4(react-dom@18.2.0)(react@18.2.0)
@@ -122,27 +122,7 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
 
-  packages/config-eslint:
-    devDependencies:
-      '@vercel/style-guide':
-        specifier: ^5.1.0
-        version: 5.1.0(eslint@8.56.0)(prettier@3.1.1)(typescript@5.3.3)
-      eslint-config-turbo:
-        specifier: ^1.11.3
-        version: 1.11.3(eslint@8.56.0)
-
-  packages/config-typescript: {}
-
-  packages/tailwind-config:
-    devDependencies:
-      '@repo/typescript-config':
-        specifier: workspace:*
-        version: link:../config-typescript
-      tailwindcss:
-        specifier: ^3.4.0
-        version: 3.4.0
-
-  packages/ui:
+  packages/components:
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*
@@ -174,6 +154,26 @@ importers:
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
+
+  packages/config-eslint:
+    devDependencies:
+      '@vercel/style-guide':
+        specifier: ^5.1.0
+        version: 5.1.0(eslint@8.56.0)(prettier@3.1.1)(typescript@5.3.3)
+      eslint-config-turbo:
+        specifier: ^1.11.3
+        version: 1.11.3(eslint@8.56.0)
+
+  packages/config-typescript: {}
+
+  packages/tailwind-config:
+    devDependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../config-typescript
+      tailwindcss:
+        specifier: ^3.4.0
+        version: 3.4.0
 
 packages:
 
@@ -1848,6 +1848,7 @@ packages:
   /esbuild@0.19.7:
     resolution: {integrity: sha512-6brbTZVqxhqgbpqBR5MzErImcpA0SQdoKOkcWK/U30HtQxnokIpG3TX2r0IJqbFUzqLjhU/zC1S5ndgakObVCQ==}
     engines: {node: '>=12'}
+    hasBin: true
     requiresBuild: true
     optionalDependencies:
       '@esbuild/android-arm': 0.19.7
@@ -3730,6 +3731,7 @@ packages:
   /rollup@4.5.2:
     resolution: {integrity: sha512-CRK1uoROBfkcqrZKyaFcqCcZWNsvJ6yVYZkqTlRocZhO2s5yER6Z3f/QaYtO8RGyloPnmhwgzuPQpNGeK210xQ==}
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
+    hasBin: true
     optionalDependencies:
       '@rollup/rollup-android-arm-eabi': 4.5.2
       '@rollup/rollup-android-arm64': 4.5.2
@@ -4112,6 +4114,7 @@ packages:
 
   /tree-kill@1.2.2:
     resolution: {integrity: sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==}
+    hasBin: true
     dev: true
 
   /ts-api-utils@1.0.3(typescript@5.3.3):
