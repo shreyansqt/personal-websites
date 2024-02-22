@@ -1,4 +1,4 @@
-import { Tile } from "@repo/components/tile";
+import { Tile } from "@repo/common/components/tile";
 
 export const metadata = {
   title: "About me",

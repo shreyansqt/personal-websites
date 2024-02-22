@@ -1,0 +1,23 @@
+@tailwind components;
+@tailwind utilities;
+
+.blockquote > p {
+  position: relative;
+}
+
+.blockquote > p::before,
+.blockquote > p::after {
+  display: none;
+}
+
+.quoteStart {
+  top: 0;
+  right: 100%;
+  transform: translate(50%, -50%);
+}
+
+/* .quoteEnd {
+  bottom: 0;
+  left: 100%;
+  transform: translate(-50%, 50%);
+} */
