@@ -1,9 +1,10 @@
 import { Posts } from "@repo/common/components/Posts";
 import { Hero } from "@repo/common/components/Hero";
 import { getPosts } from "@repo/common/utils/getPosts";
+import { passwordProtectedPosts } from "../password-protected-posts";
 
 export default async function Page() {
-  const posts = await getPosts();
+  const posts = await getPosts(passwordProtectedPosts);
   return (
     <>
       <Hero
