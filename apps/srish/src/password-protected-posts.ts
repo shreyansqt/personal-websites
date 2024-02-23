@@ -1,1 +1,1 @@
-export const passwordProtectedPosts = ['delivery-hero', 'store2be'];
+export const passwordProtectedPosts: string[] = ["delivery-hero", "store2be"];
