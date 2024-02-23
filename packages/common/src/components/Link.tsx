@@ -1,13 +1,13 @@
-import { FC, ReactNode } from 'react';
-import NextLink, { LinkProps } from 'next/link';
-import { ArrowDownCircleIcon } from '@heroicons/react/20/solid';
+import { FC, ReactNode } from "react";
+import NextLink, { LinkProps } from "next/link";
+import { ArrowDownCircleIcon } from "@heroicons/react/20/solid";
 
-type Props = LinkProps & {
+interface Props extends LinkProps {
   className?: string;
   children: ReactNode;
   isExternal?: boolean;
   canDownload?: boolean;
-};
+}
 
 export const Link: FC<Props> = ({
   className,

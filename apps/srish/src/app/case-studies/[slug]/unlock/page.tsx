@@ -1,8 +1,8 @@
 import { PostLayout } from "@repo/common/components/PostLayout";
-import { FC } from "react";
+import type { FC } from "react";
 import { getPost, getPosts } from "@repo/common/utils/getPosts";
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const posts = await getPosts();
 
   return posts
@@ -12,13 +12,12 @@ export async function generateStaticParams() {
     }));
 }
 
-type Props = {
+interface PageProps {
   params: { slug: string };
-};
+}
 
-const Unlock: FC<Props> = async ({ params }) => {
+const Unlock: FC<PageProps> = async ({ params }) => {
   const post = await getPost(params.slug);
-  if (!post) return;
   return <PostLayout {...post.metadata} showPasswordForm />;
 };
 

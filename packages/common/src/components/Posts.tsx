@@ -2,9 +2,9 @@ import { FC } from "react";
 import { PostPreview } from "./PostPreview";
 import { Post } from "../types";
 
-type Props = {
+interface Props {
   posts: Post[];
-};
+}
 
 export const Posts: FC<Props> = ({ posts }) => {
   return (

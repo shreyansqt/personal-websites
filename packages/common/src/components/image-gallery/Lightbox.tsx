@@ -15,12 +15,12 @@ import { animationVariants as animationVariants } from "./animationVariants";
 import useKeypress from "react-use-keypress";
 import classNames from "classnames";
 
-type Props = {
+interface Props {
   images: Array<GalleryImageProps & ClientImageProps & { index: number }>;
   currentIndex: number;
   onIndexChange: (newIndex: number) => void;
   hasBackground?: boolean;
-};
+}
 
 export function Lightbox({
   images,

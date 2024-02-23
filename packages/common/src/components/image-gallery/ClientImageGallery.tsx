@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { FC, useState } from 'react';
-import { Lightbox } from './Lightbox';
-import { GalleryImageProps } from './types';
-import { ClientImage, ClientImageProps } from '../image/ClientImage';
-import { chunk } from 'lodash-es';
-import classNames from 'classnames';
+import { FC, useState } from "react";
+import { Lightbox } from "./Lightbox";
+import { GalleryImageProps } from "./types";
+import { ClientImage, ClientImageProps } from "../image/ClientImage";
+import { chunk } from "lodash-es";
+import classNames from "classnames";
 
-type Props = {
+interface Props {
   images: Array<GalleryImageProps & ClientImageProps & { index: number }>;
   caption?: string;
   widened?: boolean;
   hasBackground?: boolean;
   hasShadow?: boolean;
   disableZoom?: boolean;
-};
+}
 
 export const ClientImageGallery: FC<Props> = ({
   images,
@@ -52,7 +52,7 @@ export const ClientImageGallery: FC<Props> = ({
           return (
             <div
               key={`chunk-${chunkIndex}`}
-              className={`flex ${widened ? '-mx-[240px]' : ''}`}
+              className={`flex ${widened ? "-mx-[240px]" : ""}`}
             >
               {chunk.map((image) => {
                 const aspectRatio = image.width / image.height;
@@ -61,17 +61,17 @@ export const ClientImageGallery: FC<Props> = ({
                 return (
                   <div
                     key={image.src}
-                    className={classNames('m-2 flex flex-col')}
+                    className={classNames("m-2 flex flex-col")}
                     style={{ width: `${widthPercent}%` }}
                   >
                     <button
                       onClick={() => setCurrentIndex(image.index)}
                       disabled={disableZoom}
                       className={classNames(
-                        !disableZoom ? 'cursor-zoom-in' : 'cursor-default',
+                        !disableZoom ? "cursor-zoom-in" : "cursor-default",
                         {
-                          'shadow-md': hasShadow,
-                        },
+                          "shadow-md": hasShadow,
+                        }
                       )}
                     >
                       <ClientImage
@@ -81,10 +81,10 @@ export const ClientImageGallery: FC<Props> = ({
                         width={image.width}
                         base64={image.base64}
                         className={classNames(
-                          'w-full overflow-hidden rounded-lg',
+                          "w-full overflow-hidden rounded-lg",
                           {
-                            'bg-baby-pink p-4': hasBackground,
-                          },
+                            "bg-baby-pink p-4": hasBackground,
+                          }
                         )}
                       />
                     </button>

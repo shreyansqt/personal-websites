@@ -3,12 +3,12 @@ import { ReactNode } from "react";
 import styles from "./styles.module.css";
 import { TileBorder } from "./TileBorder";
 
-type Props = {
+interface Props {
   children?: ReactNode;
   className?: string;
   title?: string;
   image?: string;
-};
+}
 
 export const Tile = ({ children, className, title, image }: Props) => {
   return (

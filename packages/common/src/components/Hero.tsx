@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import { FC } from "react";
 
-type Props = {
+interface Props {
   title: string;
   subtitle: string;
   description: string;
-};
+}
 
 export const Hero: FC<Props> = ({ title, description, subtitle }) => {
   return (

@@ -3,14 +3,14 @@ import { ClientImageProps } from "../image/ClientImage";
 import { getPlaceholder } from "../../utils/getPlaceholder";
 import { ClientImageGallery } from "./ClientImageGallery";
 
-type Props = {
+interface Props {
   images: GalleryImageProps[];
   caption?: string;
   widened?: boolean;
   hasBackground?: boolean;
   hasShadow?: boolean;
   disableZoom?: boolean;
-};
+}
 
 export const ImageGallery = async ({ images, ...restProps }: Props) => {
   const populated: Array<

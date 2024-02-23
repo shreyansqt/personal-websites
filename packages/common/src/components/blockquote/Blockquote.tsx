@@ -1,12 +1,12 @@
-import { FC, ReactNode } from 'react';
-import styles from './styles.module.css';
-import QuoteStart from './quote-start.svg';
-import QuoteEnd from './quote-end.svg';
-import Image from 'next/image';
+import { FC, ReactNode } from "react";
+import styles from "./styles.module.css";
+import QuoteStart from "./quote-start.svg";
+import QuoteEnd from "./quote-end.svg";
+import Image from "next/image";
 
-type Props = {
+interface Props {
   children: ReactNode;
-};
+}
 
 export const Blockquote: FC<Props> = ({ children }) => {
   return (

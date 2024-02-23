@@ -3,10 +3,10 @@ import { FC, ReactNode } from "react";
 import { PostMetadata } from "../types";
 import { Image } from "./image";
 
-type Props = PostMetadata & {
+interface Props extends PostMetadata {
   showPasswordForm?: boolean;
   children?: ReactNode;
-};
+}
 
 export const PostLayout: FC<Props> = ({
   slug,

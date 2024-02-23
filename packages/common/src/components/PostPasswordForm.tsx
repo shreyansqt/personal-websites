@@ -18,9 +18,9 @@ const UnlockButton = () => {
   );
 };
 
-type Props = {
+interface Props {
   redirectTo: string;
-};
+}
 
 export const PostPasswordForm: FC<Props> = ({ redirectTo }) => {
   const [message, formAction] = useFormState(
