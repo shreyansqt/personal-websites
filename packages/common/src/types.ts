@@ -1,20 +1,12 @@
 import type { SanityDocument } from 'next-sanity';
-import { type ReactNode } from "react";
+import type {PortableTextProps} from '@portabletext/react'
 
-export interface PostMetadata {
-  title: string;
-  slug: string;
-  lastModified: string;
-  cover: string;
-  description?: string;
-}
-
-export type Post = SanityDocument<{
+export type TPost = SanityDocument<{
   title: string;
   slug: { current: string };
   description?: string;
   mainImage: string;
   publishedAt: string;
   // isPasswordProtected: boolean;
-  body: ReactNode;
+  body?: PortableTextProps["value"];
 }>

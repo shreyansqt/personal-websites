@@ -11,10 +11,12 @@
   },
   "dependencies": {
     "@plaiceholder/next": "^3.0.0",
+    "@portabletext/react": "^3.0.11",
     "@repo/common": "workspace:*",
     "@sanity/client": "^6.14.3",
     "@sanity/image-url": "1",
     "@sanity/overlays": "^2.3.19",
+    "@sanity/preview-url-secret": "^1.6.3",
     "@sanity/react-loader": "^1.8.7",
     "@sanity/vision": "3",
     "@vercel/analytics": "^1.2.2",

@@ -1,12 +1,14 @@
 import { Hero } from "@repo/common/components/Hero";
-import { Posts } from "@repo/common/components/Posts";
-import type { Post } from "@repo/common/types";
+import type { TPost } from "@repo/common/types";
 import type { ReactElement } from "react";
+import { draftMode } from "next/headers";
+import {Posts} from '@repo/common/components/Posts'
 import { loadQuery } from "@/sanity/lib/store";
 import { POSTS_QUERY } from "@/sanity/lib/queries";
+import PostsPreview from "@/sanity/components/posts-preview";
 
 export default async function Page(): Promise<ReactElement> {
-  const {data: posts} = await loadQuery<Post[]>(POSTS_QUERY);
+  const initial = await loadQuery<TPost[]>(POSTS_QUERY);
   return (
     <>
       <Hero
@@ -14,7 +16,7 @@ export default async function Page(): Promise<ReactElement> {
         subtitle="A UX Designer"
         title="Hello, I am Srish"
       />
-      <Posts posts={posts} />
+      {draftMode().isEnabled ? <PostsPreview initial={initial} /> : <Posts posts={initial.data} />}
     </>
   );
 }

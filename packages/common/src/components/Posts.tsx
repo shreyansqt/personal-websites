@@ -1,9 +1,9 @@
 import type { ReactElement } from "react";
-import type { Post } from "../types";
-import { PostPreview } from "./PostPreview";
+import type { TPost } from "../types";
+import { PostPreview } from "./PostTile";
 
 interface Props {
-  posts: Post[];
+  posts: TPost[];
 }
 
 export function Posts({ posts }: Props): ReactElement {
