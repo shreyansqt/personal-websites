@@ -269,6 +269,7 @@ To gain valuable insights from a user's perspective, I prepared & conducted a us
   As Maze was a faster alternative to conducting 1:1 user interviews, which was ideal considering our project timelines.
 
 <ImageGallery
+  hasShadow
   images={[
     {
       src: '/assets/delivery-hero/MassUploadsCurrentSEQ.png',
@@ -333,21 +334,21 @@ Maze test analysis made it clear that users find Idea 2 more intuitive and strai
   ]}
 />
 
-**Finalising the next steps**
+{/* **Finalising the next steps**
 
-As this was a large-scale project, I suggested my team to break it down into smaller, manageable tasks. This approach allowed us to ensure that the existing functionalities under Mass Uploads remained usable for our users and that they could gradually adjust to the new flow.
+As this was a intensive revamp, I suggested my team to break it down into smaller steps of improvements in terms of UI/UX. This approach allowed us to ensure that the existing functionalities under Mass Uploads remained usable for our users and that they could gradually adjust to the new flow.
 
-To break down the design and implementation process, we decided to focus on the **type of Mass Upload action that was most essential for our users and currently missing from the UI** — Mass Uploads for Prep Time Strategy.
+To break down the design and implementation process, we decided to focus on the **type of Mass Upload action that was most essential for our users and currently missing from the UI — Mass Uploads for Prep Time Strategy.**
 
-{/* <ImageGallery
+<ImageGallery
   images={[
     {
-      src: 'https://cdn-images-1.medium.com/max/1600/1*3LVYQFiLt2QTxBb_5YFY-Q@2x.png',
+      src: '/assets/delivery-hero/UsageOfMassUploads.png',
       alt: 'Usage of mass uploads feature',
     },
   ]}
-  caption="Mass Upload User Needs"
-/> */}
+  caption="One of the most used feature of TES"
+/>
 
 
 
@@ -358,23 +359,29 @@ Thus for phase 1 would have the following tasks:
 3.  **Integrating the existing functionality of “Prep times Mass Update” in the new flow**
 
 
-{/* <ImageGallery
+<ImageGallery
   widened
   images={[
     {
-      src: 'https://cdn-images-1.medium.com/max/1600/1*g7H88EMhEyYTGUd7EXFjyA@2x.png',
-      alt: 'Phase 1 (in scope)— User Flow',
-      caption: 'Phase 1 (in scope)— User Flow',
-    },
+      src: '/assets/delivery-hero/UserFlowPhase1.png',
+      alt: 'In Scope User flow for Phase 1 improvements',
+      caption: 'Phase 1 InScope improvements — User Flow',
+    }
+  ]}
+/>
+
+<ImageGallery
+  widened
+  images={[
     {
-      src: "https://cdn-images-1.medium.com/max/1600/1*h0cz9PrlIcc9RIM2CF6Cpg@2x.png",
-      alt: "Phase 1 — Out of scope",
-      caption: "Phase 1 — Out of scope",
+      src: '/assets/delivery-hero/UserFlowPhase2.png',
+      alt: 'User flow of the Out of Scope Phase 1 improvements',
+      caption: 'Phase 1 Out of Scope improvements — User Flow',
     }
   ]}
 /> */}
 
-### **Visual Design**
+## **Visual Design**
 
 It was time to bring all our efforts together and create an impressive UI design along with a workable prototype.
 
@@ -382,101 +389,122 @@ While finalising the UI design, we encountered some challenges. We needed to con
 
 We went through several feedback cycles for the last step of uploading the CSV file during the UI process. We quickly iterated through the journey to arrive at the final design, which is shown below:
 
-{/* <ImageGallery
+<ImageGallery
   images={[
     {
-      src: 'https://cdn-images-1.medium.com/max/1600/1*MfHUAjMwOCcmcPteaAEe3Q.gif',
+      src: '/assets/delivery-hero/MassUploadsFinalVisualDesign.gif',
       alt: 'Final Design prototype',
       caption: 'Final Design prototype',
     },
   ]}
-/> */}
+/>
 
 
-#### Improving the Error States
+### Improving the Error States
 
 During the visual design, one of the major thing that we focused on was **updating the error states**. When our users upload CSV files, some are not fully aware of how to fill up the CSV templates in a correct order, specially users who are may be new to TES. Thus they incur errors after upload happens.
 
-To make the experience seamless & error free, we worked on following improvements in mind:
+Alongside, to make the experience seamless & error free, following improvements were focused upon:
 
-**Error Prevention**
+**1. Error Prevention**
 
 Which means reduction of errors for our users. We wanted to improve this by providing our users more information around **“How to fill the CSV files”** in a correct order.
 
 The idea was to **update our help documentation and link it to our UI**, see screenshot below.
 
-{/* <ImageGallery
+<ImageGallery
   widened
   images={[
     {
-      src: 'https://cdn-images-1.medium.com/max/800/1*3E1GknkUI3lH4L9W3YGNqQ@2x.png',
-      alt: 'TODO',
+      src: '/assets/delivery-hero/HelpDocumentationLink.png',
+      alt: 'Helper documentation link',
     },
     {
-      src: 'https://cdn-images-1.medium.com/max/800/1*Inygf4CwZzhkT7sVrEBH9g@2x.png',
-      alt: 'TODO',
+      src: '/assets/delivery-hero/HelperCSVLink.png',
+      alt: 'Helper doc link for uploading CSV template to avoid errors',
     },
     {
-      src: 'https://cdn-images-1.medium.com/max/1200/1*nj8uO-cc9kcylKcMo-VXSw.png',
-      alt: 'TODO',
+      src: '/assets/delivery-hero/HelperDocumentationSnapshot.webp',
+      alt: 'Helper Documentation Snapshot',
     },
   ]}
-  caption="Update the Help Documentation & link it on the UI"
-/> */}
+  caption="Help Documentation link to help users naviagte & use Mass Uploads functionality error-free"
+/>
 
-**Providing clear error messages**
+**2. Providing clear error messages**
 
 For all occurring errors, we needed clear messaging in case of successful uploads, and if it fails to upload then informing the users about why in a humane & easy to understand messaging.
 
 This was mainly done by **improving the UI around how the errors** **will be displayed** as well as the **having a clear message & context of the error.**
 
-{/* <ImageGallery
+Alongside also adding **helper tooltips** (whereever required) for users to understand meanings of the terms, specially for new employees working on the tool. Thus making it easier for them to navigate through the TES.
+
+<ImageGallery
   widened
   images={[
     {
-      src: 'https://cdn-images-1.medium.com/max/1200/1*2xiEphePFuo0hzDwOWYnnw@2x.png',
-      alt: 'TODO',
+      src: '/assets/delivery-hero/ClearErrorMessage_1.png',
+      alt: 'Helper documentation link',
     },
     {
-      src: 'https://cdn-images-1.medium.com/max/1200/1*R_z37yij30lI6fJFxyc57g@2x.png',
-      alt: 'TODO',
+      src: '/assets/delivery-hero/ClearErrorMessage_2.png',
+      alt: 'Clear Error Messages for Mass Uploads errors',
+    },
+    {
+      src: '/assets/delivery-hero/HelperTooltip.png',
+      alt: 'Clear Error Messages for Mass Uploads errors',
     },
   ]}
-  caption="Clear error messages"
-/> */}
+  caption="Clear Error Messages & helper tooltips in Mass Uploads Flow"
+/>
 
 
 ### **Handover & Documentation**
 
-Once the design was finalised, it was eagerly handed over to the front-end developer who has already begun the exciting process of bringing the design to life. I always also try to document all the changes and the rationale behind them whether it is a team decision due to business impact, team effort or UX decision due to users feedback etc
+Once the design was finalised, Frontenders were involved more in the process to begin the exciting process of bringing the design to life. I documented upcoming challenges as well as the updates we did later along with the rationale behind, whether it is a team decision due to business impact, team effort or UX decision due to users feedback etc
 
-{/* <ImageGallery
+<ImageGallery
   images={[
     {
-      src: 'https://cdn-images-1.medium.com/max/1600/1*4dLr0eko1NsFYeS3jEb_cw@2x.png',
-      alt: 'TODO',
+      src: '/assets/delivery-hero/DesignDocumentationForFrontend.png',
+      alt: 'Design Specifications and Discussions Documentation with Frontend & Backend',
     },
   ]}
-/> */}
+  caption="Design design making documentation shared with the team"
+/>
 
 ### **Outcome and Conclusion**
 
-Once the designs were implemented on the Production, I eagerly created a Hotjar survey to gather the SEQ/Satisfaction score on the updated flow for Mass Uploads in TES.
+After two weeks of the designs being implemented on production, I wanted to collect SEQ from our users using the updated flow of Mass Upload Functionality. To do so, I created a Hotjar survey for the same.
+
+<ImageGallery
+  widened
+  images={[
+    {
+      src: '/assets/delivery-hero/SEQSurveyViaHotjar.png',
+      alt: 'SEQ Survey launched in Mass Uploads production functionality via Hotjar',
+      caption: 'SEQ Survey launched in production via Hotjar',
+    },
+    {
+      src: '/assets/delivery-hero/SEQScoreCollectionViaHotjar.png',
+      alt: 'SEQ score after functionality implementation',
+      caption: 'SEQ score after functionality implementation',
+    },
+  ]}
+/>
+
+Once we got 17 response, was good enough to compare it with our previous score. 
+
+>New SEQ score came out to **7.6/10**. Compared to the previous score, it was an **increase of 0.5 🎉**
 
 {/* <ImageGallery
   images={[
     {
-      src: 'https://cdn-images-1.medium.com/max/1200/1*seve1nTOEXBBhKqpQe2CNg.png',
-      alt: 'TODO',
-    },
-    {
-      src: 'https://cdn-images-1.medium.com/max/1600/1*3w55jKY728vAt4qDJEoo3Q.png',
-      alt: 'TODO',
+      src: '/assets/delivery-hero/NewSEQScore.png',
+      alt: 'New SEQ Score for updated Mass uploads functionality',
     },
   ]}
 /> */}
-
-So far we got 17 responses on the above survey and the **achieved Satisfaction score is 7.6/10.**
 
 ### **Next Steps**
 
