@@ -1,9 +1,9 @@
 ---
-slug: 'delivery-hero'
-title: 'Mass Uploads Feature'
-description: 'Overhaul of the Mass Uploads functionality for internal tool used by the local operations teams '
-cover: '/assets/delivery-hero/cover.png'
-lastModified: 'Mar 14 2022'
+slug: "delivery-hero"
+title: "Mass Uploads Feature"
+description: "Overhaul of the Mass Uploads functionality for internal tool used by the local operations teams"
+cover: "/assets/delivery-hero/cover.png"
+lastModified: "Mar 14 2022"
 ---
 
 ### About Delivery Hero (DH)
@@ -14,8 +14,8 @@ lastModified: 'Mar 14 2022'
   disableZoom
   images={[
     {
-      src: '/assets/delivery-hero/DH-Intro.png',
-      alt: 'Delivery Hero Introduction',
+      src: "/assets/delivery-hero/DH-Intro.png",
+      alt: "Delivery Hero Introduction",
     },
   ]}
 />
@@ -33,13 +33,12 @@ To build a successful and enormous delivery platform, from having the food picke
   hasShadow
   images={[
     {
-      src: '/assets/delivery-hero/TES_Intro.png',
-      alt: 'About TES (Time Estimation Services) Tool',
+      src: "/assets/delivery-hero/TES_Intro.png",
+      alt: "About TES (Time Estimation Services) Tool",
     },
   ]}
   caption="Time Estmation Service Internal Tool"
 />
-
 
 ### Our Product — Time Estimations Services (TES)
 
@@ -55,7 +54,7 @@ It is a global service for platforms to **retrieve accurate delivery time estima
 
 #### TES Users
 
-<em>_who are they?_</em> 
+<em>_who are they?_</em>
 
 TES users are **DH employees (internal users)** who uses TES to **add, modify vendor's preparation times, prep time strategy as well as setup default configurations**. Most of the TES users are employees with titles like Vendor Operations Manager, Operations Senior Analyst, Performance Team Lead, Vendor Operation Team Lead.
 
@@ -63,8 +62,8 @@ TES users are **DH employees (internal users)** who uses TES to **add, modify ve
   disableZoom
   images={[
     {
-      src: '/assets/delivery-hero/WhoAreTESUsers.webp',
-      alt: 'Users of TES',
+      src: "/assets/delivery-hero/WhoAreTESUsers.webp",
+      alt: "Users of TES",
     },
   ]}
   caption="TES Users"
@@ -109,10 +108,9 @@ widened
       alt: 'Main activities w.r.t Frequency on TES',
       caption: 'Main activities w.r.t Frequency'
     },
-    
-  ]}
-/>
 
+]}
+/>
 
 As per our request sheet from previous quarters & our global survey answered by various TES users from different regions, difficulty in Mass Upload feature was expressed. Since we do not provide proper functionality in TES UI for the users to perform the needed tasks on their own, the TES team had to make several mass uploads in the backend on our users support requests (via JIRA).
 
@@ -123,8 +121,8 @@ As per our request sheet from previous quarters & our global survey answered by 
       alt: 'JIRA Tickets showcasing complaints by local teams',
       caption: 'JIRA Tickets showcasing complaints by TES users (local teams)'
     },
-    
-  ]}
+
+]}
 />
 
 Thus, this functionality in the TES dashboard is cumbersome for users to use. Mass Uploads feature includes many different actions such as changing prep time strategy, updating prep times, editing or removing fixed delivery duration etc
@@ -157,8 +155,8 @@ _Reducing pains for our users_
       alt: 'Current User flow for our internal users',
       caption: 'Current User flow for our internal users'
     },
-    
-  ]}
+
+]}
 />
 
 **The existing flow had a broken** user experience as well as an **old looking UI**, it had the following problems:
@@ -216,8 +214,8 @@ After brainstorming some quick ideas, I discussed them with my PM and we selecte
       alt: 'Mass uploads wirefames Idea 2',
       caption: 'Mass uploads wirefames Idea 2'
     },
-    
-  ]}
+
+]}
 />
 
 **Team Discussions**
@@ -231,8 +229,8 @@ As the next step, we held an engaging team discussion to update everyone on our 
       alt: 'Miro Board Team discussion session to know their thoughts',
       caption: 'Miro board team discussion session voting'
     },
-    
-  ]}
+
+]}
 />
 
 As most of the TPS team members were engineers, their focus was naturally on creating solutions that were easy to implement, rather than considering the user's perspective.
@@ -248,18 +246,17 @@ I created quick prototypes for user validation via Maze.
   hasShadow
   images={[
     {
-      src: '/assets/delivery-hero/Idea1SideNavbar.gif',
-      alt: 'Mass Uploads Idea 1 having a side navbar',
-      caption: 'Idea 1 — Side Navbar'
+      src: "/assets/delivery-hero/Idea1SideNavbar.gif",
+      alt: "Mass Uploads Idea 1 having a side navbar",
+      caption: "Idea 1 — Side Navbar",
     },
     {
-      src: '/assets/delivery-hero/Idea2StepByStepForm.gif',
-      alt: 'Mass Uploads Idea 2 with a step by step form',
-      caption: 'Idea 2 — Step by Step form'
+      src: "/assets/delivery-hero/Idea2StepByStepForm.gif",
+      alt: "Mass Uploads Idea 2 with a step by step form",
+      caption: "Idea 2 — Step by Step form",
     },
   ]}
 />
-
 
 To gain valuable insights from a user's perspective, I prepared & conducted a usability test using Maze. **User testing goals included**:
 
@@ -276,10 +273,9 @@ To gain valuable insights from a user's perspective, I prepared & conducted a us
       alt: 'Current SEQ Score for Mass Updates Functionality',
       caption: 'Current SEQ score'
     },
-    
-  ]}
-/>
 
+]}
+/>
 
 Consolidated reasons provided by the users were related to **technical constraints**, **unclarity** & **missing functionalities**.
 
@@ -296,8 +292,8 @@ We took advantage of the insights gained from our SEQ score for the existing Mas
       alt: 'User preferences difference between the two Ideas for Mass Uploads Functionality',
       caption: 'User preferences difference between the two Ideas'
     },
-    
-  ]}
+
+]}
 />
 
 Maze test analysis made it clear that users find Idea 2 more intuitive and straightforward, we experienced **an increase of SEQ as well as Confidence ratings:**
@@ -306,14 +302,14 @@ Maze test analysis made it clear that users find Idea 2 more intuitive and strai
   widened
   images={[
     {
-      src: '/assets/delivery-hero/SEQForIdea1.png',
-      alt: 'Ease of Use Score for Idea 1',
-      caption: 'SEQ — Idea 1'
+      src: "/assets/delivery-hero/SEQForIdea1.png",
+      alt: "Ease of Use Score for Idea 1",
+      caption: "SEQ — Idea 1",
     },
     {
-      src: '/assets/delivery-hero/SEQForIdea2.png',
-      alt: 'Ease of Use Score for Idea 2',
-      caption: 'SEQ — Idea 2'
+      src: "/assets/delivery-hero/SEQForIdea2.png",
+      alt: "Ease of Use Score for Idea 2",
+      caption: "SEQ — Idea 2",
     },
   ]}
 />
@@ -322,14 +318,14 @@ Maze test analysis made it clear that users find Idea 2 more intuitive and strai
   widened
   images={[
     {
-      src: '/assets/delivery-hero/ConfidenceRatingForIdea1.png',
-      alt: 'Ease of Use Score for Idea 1',
-      caption: 'Confidence Rating — Idea 1'
+      src: "/assets/delivery-hero/ConfidenceRatingForIdea1.png",
+      alt: "Ease of Use Score for Idea 1",
+      caption: "Confidence Rating — Idea 1",
     },
     {
-      src: '/assets/delivery-hero/ConfidenceRatingForIdea2.png',
-      alt: 'Ease of Use Score for Idea 2',
-      caption: 'Confidence Rating — Idea 2'
+      src: "/assets/delivery-hero/ConfidenceRatingForIdea2.png",
+      alt: "Ease of Use Score for Idea 2",
+      caption: "Confidence Rating — Idea 2",
     },
   ]}
 />
@@ -493,7 +489,7 @@ After two weeks of the designs being implemented on production, I wanted to coll
   ]}
 />
 
-Once we got 17 response, was good enough to compare it with our previous score. 
+Once we got 17 response, was good enough to compare it with our previous score.
 
 >New SEQ score came out to **7.6/10**. Compared to the previous score, it was an **increase of 0.5 🎉**
 

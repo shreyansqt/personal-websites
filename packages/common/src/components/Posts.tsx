@@ -1,12 +1,12 @@
-import { FC } from "react";
+import type { ReactElement } from "react";
+import type { Post } from "../types";
 import { PostPreview } from "./PostPreview";
-import { Post } from "../types";
 
 interface Props {
   posts: Post[];
 }
 
-export const Posts: FC<Props> = ({ posts }) => {
+export function Posts({ posts }: Props): ReactElement {
   return (
     <div className="px-4 pb-12 sm:px-0 sm:pb-16 lg:pb-20">
       <div className="container">
@@ -23,7 +23,7 @@ export const Posts: FC<Props> = ({ posts }) => {
                     ? "lg:col-5"
                     : "lg:col-7"
                 }`}
-                key={post.metadata.slug}
+                key={post._id}
               >
                 <PostPreview {...post} />
               </div>
@@ -33,4 +33,4 @@ export const Posts: FC<Props> = ({ posts }) => {
       </div>
     </div>
   );
-};
+}

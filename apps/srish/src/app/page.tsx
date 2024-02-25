@@ -1,11 +1,12 @@
 import { Hero } from "@repo/common/components/Hero";
 import { Posts } from "@repo/common/components/Posts";
-import { getPosts } from "@repo/common/utils/getPosts";
+import type { Post } from "@repo/common/types";
 import type { ReactElement } from "react";
-import { passwordProtectedPosts } from "../password-protected-posts";
+import { loadQuery } from "@/sanity/lib/store";
+import { POSTS_QUERY } from "@/sanity/lib/queries";
 
 export default async function Page(): Promise<ReactElement> {
-  const posts = await getPosts(passwordProtectedPosts);
+  const {data: posts} = await loadQuery<Post[]>(POSTS_QUERY);
   return (
     <>
       <Hero

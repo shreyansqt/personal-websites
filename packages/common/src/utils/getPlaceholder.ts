@@ -1,5 +1,6 @@
-import { getPlaiceholder, GetPlaiceholderReturn } from "plaiceholder";
 import fs from "node:fs/promises";
+import type { GetPlaiceholderReturn } from "plaiceholder";
+import { getPlaiceholder } from "plaiceholder";
 
 export const getPlaceholder = async (
   src: string

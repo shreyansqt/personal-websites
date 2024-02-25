@@ -12,13 +12,22 @@
   "dependencies": {
     "@plaiceholder/next": "^3.0.0",
     "@repo/common": "workspace:*",
+    "@sanity/client": "^6.14.3",
+    "@sanity/image-url": "1",
+    "@sanity/overlays": "^2.3.19",
+    "@sanity/react-loader": "^1.8.7",
+    "@sanity/vision": "3",
     "@vercel/analytics": "^1.2.2",
     "@vercel/speed-insights": "^1.0.10",
     "next": "^14.1.0",
+    "next-sanity": "7",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sharp": "^0.33.2"
+    "sanity": "3",
+    "server-only": "^0.0.1",
+    "sharp": "^0.33.2",
+    "styled-components": "6"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.0.4",

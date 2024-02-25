@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { ReactElement } from "react";
 
 interface Props {
   title: string;
@@ -6,7 +6,7 @@ interface Props {
   description: string;
 }
 
-export const Hero: FC<Props> = ({ title, description, subtitle }) => {
+export function Hero({ title, description, subtitle }: Props): ReactElement {
   return (
     <section className="text-center">
       <article className="container py-10 sm:py-14 lg:py-20">
@@ -28,4 +28,4 @@ export const Hero: FC<Props> = ({ title, description, subtitle }) => {
       </article>
     </section>
   );
-};
+}
