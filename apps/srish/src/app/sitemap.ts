@@ -1,5 +1,5 @@
 import { getPosts } from "@repo/common/utils/getPosts";
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getPosts();

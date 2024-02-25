@@ -1,8 +1,8 @@
-import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import { passwordProtectedPosts } from "./password-protected-posts";
 
-export function middleware(request: NextRequest) {
+export function middleware(request: NextRequest): NextResponse {
   const loginCookie = process.env.PASSWORD_COOKIE_NAME
     ? request.cookies.get(process.env.PASSWORD_COOKIE_NAME)
     : undefined;
@@ -19,9 +19,8 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(
       new URL(`${request.nextUrl.pathname}/unlock`, request.url)
     );
-  } else {
-    return NextResponse.next();
   }
+  return NextResponse.next();
 }
 
 export const config = {

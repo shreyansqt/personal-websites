@@ -1,8 +1,9 @@
-import "./globals.css";
 import "@repo/common/styles.css";
+import "./globals.css";
 
 import { Footer } from "@repo/common/components/Footer";
-import { Header, NavItem } from "@repo/common/components/header";
+import type { NavItem } from "@repo/common/components/header";
+import { Header } from "@repo/common/components/header";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
@@ -10,6 +11,7 @@ import {
   Bricolage_Grotesque as BricolageGrotesque,
   Laila,
 } from "next/font/google";
+import type { ReactElement } from "react";
 import { Providers } from "./providers";
 
 const titleFont = BricolageGrotesque({
@@ -61,7 +63,7 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>): ReactElement {
   return (
     <html lang="en">
       <body className={`${titleFont.variable} ${bodyFont.variable}`}>
