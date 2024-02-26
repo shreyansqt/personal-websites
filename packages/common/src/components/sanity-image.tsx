@@ -3,7 +3,7 @@ import NextImage from "next/image";
 import type { ReactElement } from "react";
 import type { TSanityImage } from "../types";
 
-type Props = Omit<NextImageProps, "src"> & {
+type Props = Omit<NextImageProps, "src" | "alt"> & {
   image: TSanityImage;
 }
 
@@ -13,6 +13,7 @@ export function SanityImage({
 }: Props): ReactElement {
   return (
     <NextImage
+      alt={image.asset.altText || ""}
       blurDataURL={image.asset.metadata.lqip}
       height={image.asset.metadata.dimensions.height}
       placeholder="blur"

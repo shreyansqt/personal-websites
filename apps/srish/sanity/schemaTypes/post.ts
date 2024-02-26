@@ -40,16 +40,6 @@ export default defineType({
       name: "cover",
       title: "Cover image",
       type: "image",
-      options: {
-        hotspot: true,
-      },
-      fields: [
-        {
-          name: "alt",
-          type: "string",
-          title: "Alternative Text",
-        },
-      ],
     }),
     defineField({
       name: "categories",
@@ -74,9 +64,6 @@ export default defineType({
       title: "title",
       subtitle: "description",
       media: "cover",
-    },
-    // prepare(selection) {
-    //   return selection;
-    // },
+    }
   },
 });

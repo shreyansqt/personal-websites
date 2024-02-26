@@ -1,7 +1,6 @@
 "use client";
 
-import { GalleryImageProps } from "./types";
-import { ClientImage, ClientImageProps } from "../image/ClientImage";
+import type { ReactElement} from "react";
 import { useRef, useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -11,12 +10,14 @@ import {
   XMarkIcon,
 } from "@heroicons/react/20/solid";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import { animationVariants as animationVariants } from "./animationVariants";
 import useKeypress from "react-use-keypress";
 import classNames from "classnames";
+import type { TSanityImage } from "../../types";
+import { SanityImage } from "../sanity-image";
+import { animationVariants } from "./animationVariants";
 
 interface Props {
-  images: Array<GalleryImageProps & ClientImageProps & { index: number }>;
+  images: (TSanityImage & { index: number })[];
   currentIndex: number;
   onIndexChange: (newIndex: number) => void;
   hasBackground?: boolean;
@@ -27,7 +28,7 @@ export function Lightbox({
   hasBackground,
   currentIndex,
   onIndexChange,
-}: Props) {
+}: Props): ReactElement {
   const overlayRef = useRef(null);
   const [direction, setDirection] = useState(0);
 
@@ -58,63 +59,57 @@ export function Lightbox({
     }
   });
 
-  if (!image) return null;
-
   const initialScale = Math.min(
-    window.innerHeight / image.height,
-    window.innerWidth / image.width
+    window.innerHeight / image.asset.metadata.dimensions.height,
+    window.innerWidth / image.asset.metadata.dimensions.width
   );
 
   return (
-    <Dialog static open={true} onClose={handleClose} initialFocus={overlayRef}>
+    <Dialog initialFocus={overlayRef} onClose={handleClose} open static>
       <Dialog.Overlay
-        ref={overlayRef}
+        animate={{ opacity: 1 }}
         as={motion.div}
-        key="backdrop"
         className="fixed inset-0 z-30 cursor-zoom-out bg-black/10 backdrop-blur-2xl"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        key="backdrop"
         onClick={handleClose}
+        ref={overlayRef}
       />
       <div className="pointer-events-none fixed inset-0 z-50">
-        <AnimatePresence initial={false} custom={direction}>
+        <AnimatePresence custom={direction} initial={false}>
           <motion.div
-            key={currentIndex}
-            custom={direction}
-            variants={animationVariants}
-            initial="enter"
             animate="center"
+            className="absolute inset-0"
+            custom={direction}
             exit="exit"
+            initial="enter"
+            key={currentIndex}
             transition={{
               x: { type: "spring", stiffness: 300, damping: 30 },
               opacity: { duration: 0.5 },
             }}
-            className="absolute inset-0"
+            variants={animationVariants}
           >
             <TransformWrapper
-              wheel={{ smoothStep: 0.02 }}
-              panning={{ lockAxisX: false }}
-              minScale={Math.min(0.5, initialScale)}
-              maxScale={2}
-              centerZoomedOut={true}
-              centerOnInit={true}
+              centerOnInit
+              centerZoomedOut
+              disablePadding
               initialScale={initialScale}
-              disablePadding={true}
+              maxScale={2}
+              minScale={Math.min(0.5, initialScale)}
+              panning={{ lockAxisX: false }}
+              wheel={{ smoothStep: 0.02 }}
             >
               <TransformComponent
-                wrapperClass="!size-full"
                 contentClass={classNames("pointer-events-auto cursor-grab")}
+                wrapperClass="!size-full"
               >
-                <ClientImage
-                  priority
-                  src={image.src}
-                  alt={image.alt}
-                  base64={image.base64}
-                  height={image.height}
-                  width={image.width}
+                <SanityImage
                   className={classNames("p-4", {
                     "bg-baby-pink p-4": hasBackground,
                   })}
+                  image={image}
+                  priority
                 />
               </TransformComponent>
             </TransformWrapper>
@@ -124,24 +119,27 @@ export function Lightbox({
           {currentIndex > 0 && (
             <button
               className="absolute left-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
+              onClick={() => { changeIndex(currentIndex - 1); }}
               style={{ transform: "translate3d(0, 0, 0)" }}
-              onClick={() => changeIndex(currentIndex - 1)}
+              type="button"
             >
               <ChevronLeftIcon className="h-6 w-6" />
             </button>
           )}
-          {currentIndex + 1 < (images?.length ?? 0) && (
+          {currentIndex + 1 < (images.length) && (
             <button
-              className="absolute right-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
+            className="absolute right-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
+              onClick={() => { changeIndex(currentIndex + 1); }}
               style={{ transform: "translate3d(0, 0, 0)" }}
-              onClick={() => changeIndex(currentIndex + 1)}
+              type="button"
             >
               <ChevronRightIcon className="h-6 w-6" />
             </button>
           )}
           <button
+          className="absolute right-3 top-3 flex items-center gap-2 rounded-full bg-black/50 p-3 text-white text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
             onClick={handleClose}
-            className="absolute right-3 top-3 flex items-center gap-2 rounded-full bg-black/50 p-3 text-white text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
+            type="button"
           >
             <XMarkIcon className="h-5 w-5" />
           </button>

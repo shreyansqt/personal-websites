@@ -27,7 +27,7 @@ export function Tile({
 
       {image?.asset ? (
         <div className={styles.imageWrapper}>
-          <SanityImage alt={`Cover image for post: "${title}"`} image={image} />
+          <SanityImage image={image} />
         </div>
       ) : null}
     </div>

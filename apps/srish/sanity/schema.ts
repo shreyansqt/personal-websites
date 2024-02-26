@@ -1,6 +1,5 @@
 import { type SchemaTypeDefinition } from 'sanity'
-
-import blockContent from './schemaTypes/blockContent'
+import blockContent from './schemaTypes/block-content'
 import category from './schemaTypes/category'
 import post from './schemaTypes/post'
 import author from './schemaTypes/author'

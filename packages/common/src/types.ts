@@ -3,9 +3,10 @@ import type { SanityDocument } from "next-sanity";
 import type { PortableTextProps } from "@portabletext/react";
 
 export type TSanityImage = Image & {
-  asset: Image["asset"] & {
-    metadata: ImageMetadata;
+  asset: {
     url: string;
+    altText?: string;
+    metadata: ImageMetadata;
   };
 };
 

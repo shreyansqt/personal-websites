@@ -2,16 +2,17 @@
  * This configuration is used to for the Sanity Studio that’s mounted on the `/app/studio/[[...index]]/page.tsx` route
  */
 
-import {visionTool} from '@sanity/vision'
-import {defineConfig} from 'sanity'
-import {structureTool} from 'sanity/structure'
-import { presentationTool } from 'sanity/presentation'
-import {apiVersion, dataset, projectId} from './sanity/env'
-import {schema} from './sanity/schema'
-import { locate } from './sanity/presentation/locate'
+import { visionTool } from "@sanity/vision";
+import { defineConfig } from "sanity";
+import { structureTool } from "sanity/structure";
+import { presentationTool } from "sanity/presentation";
+import { media, mediaAssetSource } from "sanity-plugin-media";
+import { apiVersion, dataset, projectId } from "./sanity/env";
+import { schema } from "./sanity/schema";
+import { locate } from "./sanity/presentation/locate";
 
 export default defineConfig({
-  basePath: '/studio',
+  basePath: "/studio",
   projectId,
   dataset,
   // Add and edit the content schema in the './sanity/schema' folder
@@ -20,15 +21,23 @@ export default defineConfig({
     structureTool(),
     // Vision is a tool that lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
-    visionTool({defaultApiVersion: apiVersion}),
+    visionTool({ defaultApiVersion: apiVersion }),
     presentationTool({
       locate,
       previewUrl: {
         draftMode: {
-          enable: '/api/draft',
+          enable: "/api/draft",
         },
       },
     }),
-
+    media(),
   ],
-})
+  form: {
+    // Don't use this plugin when selecting files only (but allow all other enabled asset sources)
+    file: {
+      assetSources: previousAssetSources => {
+        return previousAssetSources.filter(assetSource => assetSource !== mediaAssetSource)
+      }
+    }
+  }
+});
