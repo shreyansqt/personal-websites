@@ -1,24 +1,21 @@
-import { FC, ReactNode } from "react";
+import type { ReactElement, ReactNode } from "react";
 import styles from "./styles.module.css";
-import QuoteStart from "./quote-start.svg";
-import QuoteEnd from "./quote-end.svg";
-import Image from "next/image";
 
 interface Props {
   children: ReactNode;
 }
 
-export const Blockquote: FC<Props> = ({ children }) => {
+export function Blockquote({ children }: Props): ReactElement {
   return (
     <blockquote
       className={`relative my-8 border-none p-0 ${styles.blockquote}`}
     >
       {/* Quote Start */}
       <svg
-        width="97"
+        className={`absolute m-0 size-16 text-baby-peach text-opacity-50 dark:text-black dark:text-opacity-20 ${styles.quoteStart}`}
         height="96"
         viewBox="0 0 97 96"
-        className={`absolute m-0 size-16 text-baby-peach text-opacity-50 dark:text-black dark:text-opacity-20 ${styles.quoteStart}`}
+        width="97"
       >
         <path
           d="M0.0576193 96V46.1076C0.0576193 17.548 13.1336 5.50524 38.6487 -1.56559e-06V19.2695C22.3824 26.4952 22.3824 30.6241 22.3824 48.5173H41.5191V96H0.0576193ZM54.5961 96C54.5961 78.4509 54.5961 61.247 54.5961 43.6978C54.5961 29.2466 57.1476 19.9553 67.9921 11.0093C75.6464 4.8159 84.5763 2.06328 93.8262 1.37512V19.6112C78.1989 26.1487 76.2842 29.5895 76.2842 48.5149H96.0576V96H54.5961Z"
