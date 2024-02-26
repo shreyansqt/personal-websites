@@ -8,6 +8,7 @@ import {structureTool} from 'sanity/structure'
 import { presentationTool } from 'sanity/presentation'
 import {apiVersion, dataset, projectId} from './sanity/env'
 import {schema} from './sanity/schema'
+import { locate } from './sanity/presentation/locate'
 
 export default defineConfig({
   basePath: '/studio',
@@ -21,6 +22,7 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({defaultApiVersion: apiVersion}),
     presentationTool({
+      locate,
       previewUrl: {
         draftMode: {
           enable: '/api/draft',
