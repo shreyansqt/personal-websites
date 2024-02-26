@@ -10,7 +10,6 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@plaiceholder/next": "^3.0.0",
     "@portabletext/react": "^3.0.11",
     "@repo/common": "workspace:*",
     "@sanity/client": "^6.14.3",
