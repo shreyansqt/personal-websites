@@ -5,7 +5,7 @@ import { chunk } from "lodash-es";
 import classNames from "classnames";
 import type { TSanityImage } from "../../types";
 import { SanityImage } from "../sanity-image";
-import { Lightbox } from "./lightbox";
+import { Lightbox } from "./lightbox.tsx";
 
 export interface ImageGalleryProps {
   images: TSanityImage[];
