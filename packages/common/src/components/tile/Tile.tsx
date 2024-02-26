@@ -1,5 +1,6 @@
-import type { ReactNode } from "react";
-import { Image } from "../image";
+import type { ReactElement, ReactNode } from "react";
+import type { TSanityImage } from "../../types";
+import { SanityImage } from "../sanity-image";
 import styles from "./styles.module.css";
 import { TileBorder } from "./TileBorder";
 
@@ -7,10 +8,15 @@ interface Props {
   children?: ReactNode;
   className?: string;
   title?: string;
-  image?: string;
+  image?: TSanityImage;
 }
 
-export function Tile({ children, className, title, image }: Props) {
+export function Tile({
+  children,
+  className,
+  title,
+  image,
+}: Props): ReactElement {
   return (
     <div className={`${styles.tile} ${className}`}>
       <TileBorder />
@@ -19,11 +25,11 @@ export function Tile({ children, className, title, image }: Props) {
         {children}
       </div>
 
-      {/* {image && (
+      {image?.asset ? (
         <div className={styles.imageWrapper}>
-          <Image src={image} alt="Cover image for the post" />
+          <SanityImage alt={`Cover image for post: "${title}"`} image={image} />
         </div>
-      )} */}
+      ) : null}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
 import type { TPost } from "../types";
-import { PostPreview } from "./PostTile";
+import { PostTile } from "./PostTile";
 
 interface Props {
   posts: TPost[];
@@ -25,7 +25,7 @@ export function Posts({ posts }: Props): ReactElement {
                 }`}
                 key={post._id}
               >
-                <PostPreview {...post} />
+                <PostTile post={post} />
               </div>
             );
           })}
