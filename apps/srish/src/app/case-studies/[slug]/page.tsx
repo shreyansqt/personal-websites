@@ -6,13 +6,14 @@ import { POSTS_QUERY, POST_QUERY } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
 import { loadQuery } from "@/sanity/lib/store";
 import PostPreview from "@/sanity/components/post-preview";
+import { token } from "@/sanity/lib/token";
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const posts = await client.fetch<TPost[]>(POSTS_QUERY)
+  const posts = await client.withConfig({ token }).fetch<TPost[]>(POSTS_QUERY);
 
   return posts.map((post) => ({
     slug: post.slug.current,
-  }))
+  }));
 }
 
 interface PageProps {
@@ -21,7 +22,9 @@ interface PageProps {
   };
 }
 
-export default async function CaseStudyPage({ params }: PageProps): Promise<ReactElement> {
+export default async function CaseStudyPage({
+  params,
+}: PageProps): Promise<ReactElement> {
   const initial = await loadQuery<TPost>(POST_QUERY, params, {
     // Because of Next.js, RSC and Dynamic Routes this currently
     // cannot be set on the loadQuery function at the "top level"
@@ -32,4 +35,4 @@ export default async function CaseStudyPage({ params }: PageProps): Promise<Reac
   ) : (
     <Post post={initial.data} />
   );
-};
+}

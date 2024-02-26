@@ -1,16 +1,23 @@
+import type { TPost } from "@repo/common/types";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import { passwordProtectedPosts } from "./password-protected-posts";
+import { client } from "@/sanity/lib/client";
+import {PROTECTED_POSTS_QUERY} from '@/sanity/lib/queries';
+import { token } from "@/sanity/lib/token";
 
-export function middleware(request: NextRequest): NextResponse {
+export async function middleware(request: NextRequest): Promise<NextResponse> {
   const loginCookie = process.env.PASSWORD_COOKIE_NAME
     ? request.cookies.get(process.env.PASSWORD_COOKIE_NAME)
     : undefined;
   const isLoggedIn = loginCookie?.value === "true";
 
-  const passwordProtectedPaths = passwordProtectedPosts.map(
-    (slug) => `/case-studies/${slug}`
+  const passwordProtectedPosts = await client.withConfig({ token }).fetch<TPost[]>(
+    PROTECTED_POSTS_QUERY
   );
+
+  const passwordProtectedPaths = passwordProtectedPosts.map(
+    ({ slug }) => `/case-studies/${slug.current}`
+    );
 
   if (
     !isLoggedIn &&

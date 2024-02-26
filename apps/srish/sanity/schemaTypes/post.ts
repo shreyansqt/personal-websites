@@ -20,6 +20,12 @@ export default defineType({
       },
     }),
     defineField({
+      name: "isPasswordProtected",
+      title: "Password protected",
+      type: "boolean",
+      initialValue: false,
+    }),
+    defineField({
       name: "description",
       title: "Description",
       type: "string",

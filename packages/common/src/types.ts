@@ -15,6 +15,6 @@ export type TPost = SanityDocument<{
   description?: string;
   cover: TSanityImage;
   publishedAt: string;
-  // isPasswordProtected: boolean;
+  isPasswordProtected: boolean;
   body?: PortableTextProps["value"];
 }>;
