@@ -19,6 +19,8 @@ import { Providers } from "./providers";
 const titleFont = BricolageGrotesque({
   subsets: ["latin"],
   variable: "--font-title",
+  display: "swap",
+  adjustFontFallback: false,
 });
 
 const bodyFont = Laila({

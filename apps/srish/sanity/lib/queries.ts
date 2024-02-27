@@ -9,7 +9,7 @@ export const POSTS_QUERY = groq`*[_type == "post" && defined(slug)] {
       metadata
     }
   }
-}`;
+} | order(publishedAt desc)`;
 
 export const PROTECTED_POSTS_QUERY = groq`*[_type == "post" && defined(slug) && isPasswordProtected == true] {
   ...,
@@ -20,7 +20,7 @@ export const PROTECTED_POSTS_QUERY = groq`*[_type == "post" && defined(slug) && 
       metadata
     }
   }
-}`;
+} | order(publishedAt desc)`;
 
 export const POST_QUERY = groq`*[_type == "post" && slug.current == $slug][0] {
   ...,
