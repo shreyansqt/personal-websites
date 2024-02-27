@@ -12,11 +12,15 @@ import {
   Laila,
 } from "next/font/google";
 import type { ReactElement } from "react";
+import { draftMode } from "next/headers";
+import LiveVisualEditing from "@/sanity/components/live-visual-editing";
 import { Providers } from "./providers";
 
 const titleFont = BricolageGrotesque({
   subsets: ["latin"],
   variable: "--font-title",
+  display: "swap",
+  adjustFontFallback: false,
 });
 
 const bodyFont = Laila({
@@ -77,6 +81,7 @@ export default function RootLayout({
         </Providers>
         <SpeedInsights />
         <Analytics />
+        {draftMode().isEnabled ? <LiveVisualEditing /> : null}
       </body>
     </html>
   );

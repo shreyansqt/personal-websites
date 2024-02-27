@@ -1,15 +1,21 @@
-import { ReactNode } from 'react';
+import type { Image, ImageMetadata } from "sanity";
+import type { SanityDocument } from "next-sanity";
+import type { PortableTextProps } from "@portabletext/react";
 
-export type PostMetadata = {
+export type TSanityImage = Image & {
+  asset: {
+    url: string;
+    altText?: string;
+    metadata: ImageMetadata;
+  };
+};
+
+export type TPost = SanityDocument<{
   title: string;
-  slug: string;
-  lastModified: string;
-  cover: string;
+  slug: { current: string };
   description?: string;
-};
-
-export type Post = {
-  metadata: PostMetadata;
-  body: ReactNode;
+  cover: TSanityImage;
+  publishedAt: string;
   isPasswordProtected: boolean;
-};
+  body?: PortableTextProps["value"];
+}>;

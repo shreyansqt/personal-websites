@@ -1,25 +1,25 @@
-import { PostLayout } from "@repo/common/components/PostLayout";
-import type { FC } from "react";
-import { getPost, getPosts } from "@repo/common/utils/getPosts";
-import { passwordProtectedPosts } from "../../../../password-protected-posts";
+import { Post } from "@repo/common/components/Post";
+import type { ReactElement } from "react";
+import type {TPost} from '@repo/common/types';
+import {POST_QUERY, PROTECTED_POSTS_QUERY} from '@/sanity/lib/queries';
+import {client} from '@/sanity/lib/client';
+import {loadQuery} from '@/sanity/lib/store';
+import { token } from "@/sanity/lib/token";
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const posts = await getPosts(passwordProtectedPosts);
+  const posts = await client.withConfig({token}).fetch<TPost[]>(PROTECTED_POSTS_QUERY)
 
-  return posts
-    .filter(({ isPasswordProtected }) => isPasswordProtected)
-    .map(({ metadata }) => ({
-      slug: metadata.slug,
-    }));
+  return posts.map((post) => ({
+    slug: post.slug.current,
+  }))
 }
 
 interface PageProps {
   params: { slug: string };
 }
 
-const Unlock: FC<PageProps> = async ({ params }) => {
-  const post = await getPost(params.slug);
-  return <PostLayout {...post.metadata} showPasswordForm />;
-};
+export default async function Unlock({ params }: PageProps): Promise<ReactElement> {
+  const {data: post} = await loadQuery<TPost>(POST_QUERY, params);
 
-export default Unlock;
+  return <Post post={post} showPasswordForm />
+};

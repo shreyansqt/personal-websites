@@ -10,15 +10,26 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@plaiceholder/next": "^3.0.0",
+    "@portabletext/react": "^3.0.11",
     "@repo/common": "workspace:*",
+    "@sanity/client": "^6.14.3",
+    "@sanity/overlays": "^2.3.19",
+    "@sanity/preview-url-secret": "^1.6.3",
+    "@sanity/react-loader": "^1.8.7",
+    "@sanity/vision": "3",
     "@vercel/analytics": "^1.2.2",
     "@vercel/speed-insights": "^1.0.10",
     "next": "^14.1.0",
+    "next-sanity": "7",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sharp": "^0.33.2"
+    "rxjs": "^7.8.1",
+    "sanity": "3",
+    "sanity-plugin-media": "^2.2.5",
+    "server-only": "^0.0.1",
+    "sharp": "^0.33.2",
+    "styled-components": "6"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.0.4",
@@ -29,6 +40,7 @@
     "@types/node": "^20.10.6",
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",
+    "@types/rx": "^4.1.4",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.33",
     "tailwindcss": "^3.4.0",
