@@ -1,4 +1,4 @@
-import type { Image, ImageMetadata } from "sanity";
+import type { Image, ImageMetadata, Asset } from "sanity";
 import type { SanityDocument } from "next-sanity";
 import type { PortableTextProps } from "@portabletext/react";
 
@@ -18,4 +18,13 @@ export type TPost = SanityDocument<{
   publishedAt: string;
   isPasswordProtected: boolean;
   body?: PortableTextProps["value"];
+}>;
+
+export type TLink = SanityDocument<{
+  title: string;
+  href?: string;
+  isExternal?: boolean;
+  downloadFile?: {
+    asset: Asset
+  };
 }>;

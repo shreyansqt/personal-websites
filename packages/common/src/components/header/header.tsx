@@ -1,16 +1,16 @@
 "use client";
 
 import { useWindowScroll } from "@uidotdev/usehooks";
-import { FC } from "react";
+import type { ReactElement } from "react";
+import type { TLink } from "../../types";
 import { ThemeToggle } from "../ThemeToggle";
-import { NavItem } from "./types";
-import { NavLink } from "./NavLink";
+import {HeaderLink} from './header-link'
 
 interface Props {
-  items: NavItem[];
+  links: TLink[];
 }
 
-export const Header: FC<Props> = ({ items }) => {
+export function Header({ links }: Props): ReactElement {
   const [scrollPosition] = useWindowScroll();
   const isAtTop = scrollPosition.y !== null && scrollPosition.y <= 0;
   return (
@@ -24,10 +24,10 @@ export const Header: FC<Props> = ({ items }) => {
               : "border-white bg-opacity-50 dark:border-dark-cobalt dark:bg-opacity-20"
           }`}
         >
-          {items.map(({ key, ...item }, index) => {
+          {links.map((link, index) => {
             return (
-              <li key={key} className={index > 0 ? "ml-4" : ""}>
-                <NavLink key={key} {...item} />
+              <li className={index > 0 ? "ml-4" : ""} key={link._id}>
+                <HeaderLink link={link} />
               </li>
             );
           })}

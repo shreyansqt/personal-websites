@@ -1,5 +1,6 @@
-import { FC, ReactNode } from "react";
-import NextLink, { LinkProps } from "next/link";
+import type { ReactElement } from "react";
+import type { LinkProps } from "next/link";
+import NextLink from "next/link";
 import { ArrowDownCircleIcon } from "@heroicons/react/20/solid";
 
 interface Props extends LinkProps {
@@ -9,25 +10,25 @@ interface Props extends LinkProps {
   canDownload?: boolean;
 }
 
-export const Link: FC<Props> = ({
+export function Link({
   className,
   children,
   isExternal,
   canDownload,
   ...props
-}) => {
+}: Props): ReactElement {
   const classNames = `text-cobalt dark:text-baby-peach hover:underline hover:text-dark-cobalt dark:hover:text-peach flex items-center ${className}`;
 
-  if (isExternal) {
+  if (isExternal || canDownload) {
     return (
       <a
-        href={props.href.toString()}
-        target="_blank"
         className={classNames}
         download={canDownload}
-        rel="nofollow"
+        href={String(props.href)}
+        rel="nofollow noreferrer"
+        target="_blank"
       >
-        {canDownload && <ArrowDownCircleIcon className="mr-2 size-5" />}
+        {canDownload ? <ArrowDownCircleIcon className="mr-2 size-5" /> : null}
         {children}
       </a>
     );
@@ -37,4 +38,4 @@ export const Link: FC<Props> = ({
       {children}
     </NextLink>
   );
-};
+}

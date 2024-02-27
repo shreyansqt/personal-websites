@@ -1,5 +1,29 @@
 import { groq } from "next-sanity";
 
+export const HEADER_QUERY = groq`*[_type == "header" && _id == 'header'][0] {
+  ...,
+  links[]->{
+    ...,
+    downloadFile {
+      asset -> {
+        url
+      }
+    }
+  }
+}`;
+
+export const FOOTER_QUERY = groq`*[_type == "footer" && _id == 'footer'][0] {
+  ...,
+  links[]->{
+    ...,
+    downloadFile {
+      asset -> {
+        url
+      }
+    }
+  }
+}`;
+
 export const POSTS_QUERY = groq`*[_type == "post" && defined(slug)] {
   ...,
   cover {

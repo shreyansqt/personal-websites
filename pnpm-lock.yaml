@@ -35,9 +35,6 @@ importers:
       '@sanity/client':
         specifier: ^6.14.3
         version: 6.14.3
-      '@sanity/overlays':
-        specifier: ^2.3.19
-        version: 2.3.19(next@14.1.0)
       '@sanity/preview-url-secret':
         specifier: ^1.6.3
         version: 1.6.3(@sanity/client@6.14.3)
@@ -2077,17 +2074,6 @@ packages:
       - supports-color
     dev: false
 
-  /@sanity/overlays@2.3.19(next@14.1.0):
-    resolution: {integrity: sha512-B1nNVBGvPR9jEYBIaAaXAUeL38EGuITiFclVPFXEvMQzZci1flCcFJDwKoVdgzD0iI9jKT8+RzeViF7qcAGKNw==}
-    engines: {node: '>=16.14'}
-    deprecated: migrate to @sanity/visual-editing
-    dependencies:
-      '@sanity/visual-editing': 1.5.0(next@14.1.0)
-    transitivePeerDependencies:
-      - '@remix-run/react'
-      - next
-    dev: false
-
   /@sanity/portable-text-editor@3.30.0(react-dom@18.2.0)(react@18.2.0)(rxjs@7.8.1)(styled-components@6.1.8):
     resolution: {integrity: sha512-EER/7P02fm8C7rHB0PDo5RTzjL0p+HMKWTNQ0zmRHmAl/wGBnLGblXCtO5mzmZR1LNP2O9mKJti64vUIDrlEfA==}
     engines: {node: '>=18'}
@@ -2323,27 +2309,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
       react-is: 18.2.0
       scroll-into-view-if-needed: 3.1.0
-    dev: false
-
-  /@sanity/visual-editing@1.5.0(next@14.1.0):
-    resolution: {integrity: sha512-ISkt1G/ZFPULnDYGWcMW//ThnufAVRblLtSd3dtZWahs+vYts+AyxAJRgp3sIrC9BqNak12RC6Z+HU6Ue8RVcw==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      '@remix-run/react': '>= 2'
-      next: '>= 13'
-    peerDependenciesMeta:
-      '@remix-run/react':
-        optional: true
-      next:
-        optional: true
-    dependencies:
-      '@vercel/stega': 0.1.0
-      next: 14.1.0(@babel/core@7.23.9)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-is: 18.2.0
-      scroll-into-view-if-needed: 3.1.0
-      valibot: 0.29.0
     dev: false
 
   /@sanity/webhook@4.0.0:
@@ -8962,10 +8927,6 @@ packages:
   /uuidv7@0.4.4:
     resolution: {integrity: sha512-jjRGChg03uGp9f6wQYSO8qXkweJwRbA5WRuEQE8xLIiehIzIIi23qZSzsyvZPCPoFqkeLtZuz7Plt1LGukAInA==}
     hasBin: true
-    dev: false
-
-  /valibot@0.29.0:
-    resolution: {integrity: sha512-JhZn08lwZPhAamOCfBwBkv/btQt4KeQhekULPH8crH053zUCLSOGEF2zKExu3bFf245tsj6J1dY0ysd/jUiMIQ==}
     dev: false
 
   /validate-npm-package-license@3.0.4:

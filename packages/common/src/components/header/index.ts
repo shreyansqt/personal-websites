@@ -1,3 +1,1 @@
-export { Header } from './Header';
-
-export * from './types';
+export { Header } from './header';
