@@ -6,11 +6,11 @@ import type { TLink } from "../../types";
 import { ThemeToggle } from "../ThemeToggle";
 import {HeaderLink} from './header-link'
 
-interface Props {
+export interface HeaderProps {
   links: TLink[];
 }
 
-export function Header({ links }: Props): ReactElement {
+export function Header({ links }: HeaderProps): ReactElement {
   const [scrollPosition] = useWindowScroll();
   const isAtTop = scrollPosition.y !== null && scrollPosition.y <= 0;
   return (

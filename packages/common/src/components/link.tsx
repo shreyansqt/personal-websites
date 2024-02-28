@@ -1,4 +1,4 @@
-import type { ReactElement } from "react";
+import type { ReactElement, ReactNode } from "react";
 import type { LinkProps } from "next/link";
 import NextLink from "next/link";
 import { ArrowDownCircleIcon } from "@heroicons/react/20/solid";
