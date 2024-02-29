@@ -56,3 +56,8 @@ export type TPage = SanityDocument<{
 }>;
 
 export type TSanityLinkItem = TFile | TLink | TPage;
+
+export interface TMetadata {
+  title: string;
+  description: string;
+}

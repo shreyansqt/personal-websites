@@ -14,18 +14,21 @@ export const structure = (S: StructureBuilder): ListBuilder => {
             // Each will pull one of our new singletons
             .items([
               S.listItem()
-                .title("Header")
+                .title("Site Header")
                 .child(S.document().schemaType("header").documentId("header")),
               S.listItem()
-                .title("Footer")
+                .title("Site Footer")
                 .child(S.document().schemaType("footer").documentId("footer")),
+              S.listItem()
+                .title("SEO Metadata")
+                .child(S.document().schemaType("metadata").documentId("metadata")),
             ])
         ),
       S.divider(),
       ...S.documentTypeListItems().filter(
         (listItem) => {
           const listItemId = listItem.getId();
-          return listItemId && !["header", "footer"].includes(listItemId)
+          return listItemId && !["header", "footer", "metadata"].includes(listItemId)
         }
       ),
     ]);

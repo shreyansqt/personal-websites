@@ -8,6 +8,7 @@ import page from "./schemaTypes/page";
 import hero from "./schemaTypes/hero";
 import postList from "./schemaTypes/post-list";
 import file from "./schemaTypes/file";
+import metadata from "./schemaTypes/metadata";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -20,5 +21,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     hero,
     postList,
     file,
+    metadata
   ],
 };

@@ -12,8 +12,13 @@ import {
 } from "next/font/google";
 import { draftMode } from "next/headers";
 import type { ReactElement } from "react";
+import type { TMetadata } from "@repo/common/src/types";
 import { loadQuery } from "@/sanity/lib/store";
-import { FOOTER_QUERY, HEADER_QUERY } from "@/sanity/lib/queries";
+import {
+  FOOTER_QUERY,
+  HEADER_QUERY,
+  METADATA_QUERY,
+} from "@/sanity/lib/queries";
 import LiveVisualEditing from "@/sanity/components/live-visual-editing";
 import { Providers } from "./providers";
 
@@ -30,14 +35,13 @@ const bodyFont = Laila({
   variable: "--font-body",
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "Srish, A UX Designer",
-    template: `%s | Srish, A UX Designer`,
-  },
-  description:
-    "I am a dedicated product designer with a focus on User Research. I am driven by empathy, self-reliance, and a relentless commitment to solving complex problems in a user-centric manner.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { data } = await loadQuery<TMetadata>(METADATA_QUERY);
+  return {
+    title: data.title,
+    description: data.description,
+  };
+}
 
 export const viewport: Viewport = {
   themeColor: [
@@ -57,8 +61,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>): Promise<ReactElement> {
-  const {data: headerProps} = await loadQuery<HeaderProps>(HEADER_QUERY);
-  const {data: footerProps} = await loadQuery<FooterProps>(FOOTER_QUERY);
+  const { data: headerProps } = await loadQuery<HeaderProps>(HEADER_QUERY);
+  const { data: footerProps } = await loadQuery<FooterProps>(FOOTER_QUERY);
   return (
     <html lang="en">
       <body className={`${titleFont.variable} ${bodyFont.variable}`}>

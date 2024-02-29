@@ -24,6 +24,8 @@ export const FOOTER_QUERY = groq`*[_type == "footer" && _id == 'footer'][0] {
   }
 }`;
 
+export const METADATA_QUERY = groq`*[_type == "metadata" && _id == 'metadata'][0]`;
+
 export const PAGES_QUERY = groq`*[_type == "page" && defined(path)]`
 
 export const getPageQuery = (path: string): string => groq`*[_type == "page" && path == '${path}'][0] {
