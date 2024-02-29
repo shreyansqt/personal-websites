@@ -17,11 +17,6 @@ import { FOOTER_QUERY, HEADER_QUERY } from "@/sanity/lib/queries";
 import LiveVisualEditing from "@/sanity/components/live-visual-editing";
 import { Providers } from "./providers";
 
-// Force static rendering and cache the data of a layout or page by
-// causing an error if any components use dynamic functions or uncached data.
-// https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic
-export const dynamic = "error";
-
 const titleFont = BricolageGrotesque({
   subsets: ["latin"],
   variable: "--font-title",
