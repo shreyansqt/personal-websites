@@ -7,6 +7,7 @@ import { defineConfig } from "sanity";
 import { media, mediaAssetSource } from "sanity-plugin-media";
 import { presentationTool } from "sanity/presentation";
 import { structureTool } from "sanity/structure"
+import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 import { apiVersion, dataset, projectId } from "./sanity/env";
 import { locate } from "./sanity/presentation/locate";
 import { schema } from "./sanity/schema";
@@ -19,6 +20,7 @@ const config = defineConfig({
   // Add and edit the content schema in the './sanity/schema' folder
   schema,
   plugins: [
+    vercelDeployTool(),
     structureTool({ structure }),
 
     // Vision is a tool that lets you query your content with GROQ in the studio
