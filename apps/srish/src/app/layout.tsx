@@ -12,7 +12,7 @@ import {
 } from "next/font/google";
 import { draftMode } from "next/headers";
 import type { ReactElement } from "react";
-import type { TMetadata } from "@repo/common/src/types";
+import type { TMetadata } from "@repo/common/types";
 import { loadQuery } from "@/sanity/lib/store";
 import {
   FOOTER_QUERY,
