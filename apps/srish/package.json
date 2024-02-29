@@ -7,13 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "deploy:graphql": "sanity graphql deploy"
   },
   "dependencies": {
     "@portabletext/react": "^3.0.11",
     "@repo/common": "workspace:*",
     "@sanity/client": "^6.14.3",
-    "@sanity/overlays": "^2.3.19",
+    "@sanity/icons": "^2.10.3",
     "@sanity/preview-url-secret": "^1.6.3",
     "@sanity/react-loader": "^1.8.7",
     "@sanity/vision": "3",
@@ -36,6 +37,7 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/tailwind-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@sanity/cli": "^3.30.1",
     "@tailwindcss/typography": "^0.5.10",
     "@types/node": "^20.10.6",
     "@types/react": "^18.2.46",

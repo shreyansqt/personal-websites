@@ -31,21 +31,9 @@ export default defineType({
       type: "string",
     }),
     defineField({
-      name: "author",
-      title: "Author",
-      type: "reference",
-      to: { type: "author" },
-    }),
-    defineField({
       name: "cover",
       title: "Cover image",
       type: "image",
-    }),
-    defineField({
-      name: "categories",
-      title: "Categories",
-      type: "array",
-      of: [{ type: "reference", to: { type: "category" } }],
     }),
     defineField({
       name: "publishedAt",

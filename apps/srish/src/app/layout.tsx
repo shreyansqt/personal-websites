@@ -1,9 +1,8 @@
 import "@repo/common/styles.css";
 import "./globals.css";
 
-import { Footer } from "@repo/common/components/Footer";
-import type { NavItem } from "@repo/common/components/header";
-import { Header } from "@repo/common/components/header";
+import { Header, type HeaderProps } from "@repo/common/components/header";
+import { Footer, type FooterProps } from "@repo/common/components/footer";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
@@ -11,8 +10,10 @@ import {
   Bricolage_Grotesque as BricolageGrotesque,
   Laila,
 } from "next/font/google";
-import type { ReactElement } from "react";
 import { draftMode } from "next/headers";
+import type { ReactElement } from "react";
+import { loadQuery } from "@/sanity/lib/store";
+import { FOOTER_QUERY, HEADER_QUERY } from "@/sanity/lib/queries";
 import LiveVisualEditing from "@/sanity/components/live-visual-editing";
 import { Providers } from "./providers";
 
@@ -51,33 +52,24 @@ export const viewport: Viewport = {
   ],
 };
 
-const navigationItems: NavItem[] = [
-  { key: "home", label: "Portfolio", href: "/" },
-  // { key: 'about', label: 'About me', href: '/about' },
-  {
-    key: "resume",
-    label: "Resume",
-    href: "/Matta_Srishti_Resume.pdf",
-    canDownload: true,
-    isExternal: true,
-  },
-];
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>): ReactElement {
+}>): Promise<ReactElement> {
+  const {data: headerProps} = await loadQuery<HeaderProps>(HEADER_QUERY);
+  const {data: footerProps} = await loadQuery<FooterProps>(FOOTER_QUERY);
   return (
     <html lang="en">
       <body className={`${titleFont.variable} ${bodyFont.variable}`}>
         <Providers>
           <div className="background" />
-          <Header items={navigationItems} />
+
+          <Header {...headerProps} />
 
           <main className="pt-20">{children}</main>
 
-          <Footer />
+          <Footer {...footerProps} />
         </Providers>
         <SpeedInsights />
         <Analytics />

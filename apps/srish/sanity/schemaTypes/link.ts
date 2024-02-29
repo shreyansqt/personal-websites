@@ -1,19 +1,21 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'category',
-  title: 'Category',
+  name: 'link',
+  title: 'External Link',
   type: 'document',
   fields: [
     defineField({
       name: 'title',
-      title: 'Title',
+      title: 'Label',
       type: 'string',
+      validation: (Rule) => Rule.required()
     }),
     defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'text',
+      name: 'href',
+      title: 'URL',
+      type: 'url',
+      validation: (Rule) => Rule.required()
     }),
   ],
 })

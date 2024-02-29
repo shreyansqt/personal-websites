@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
 import type { TPost } from "../types";
-import { Link } from "./Link";
+import { Link } from "./link";
 import { Tile } from "./tile";
 
 export function PostTile({

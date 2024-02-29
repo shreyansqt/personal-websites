@@ -1,22 +1,22 @@
 "use client";
 
 import { useWindowScroll } from "@uidotdev/usehooks";
-import { FC } from "react";
+import type { ReactElement } from "react";
+import type { TSanityLinkItem} from '../../types';
 import { ThemeToggle } from "../ThemeToggle";
-import { NavItem } from "./types";
-import { NavLink } from "./NavLink";
+import {HeaderLink} from './header-link'
 
-interface Props {
-  items: NavItem[];
+export interface HeaderProps {
+  items: TSanityLinkItem[] | null;
 }
 
-export const Header: FC<Props> = ({ items }) => {
+export function Header({ items }: HeaderProps): ReactElement {
   const [scrollPosition] = useWindowScroll();
   const isAtTop = scrollPosition.y !== null && scrollPosition.y <= 0;
   return (
     <header className="pointer-events-none fixed left-0 top-0 z-10 w-full py-2 sm:py-3">
       <ThemeToggle />
-      <nav className="flex justify-center">
+      {items ? <nav className="flex justify-center">
         <ul
           className={`pointer-events-auto flex flex-row rounded-full border bg-white p-2 backdrop-blur-sm transition-colors duration-500 dark:bg-black md:p-2.5 ${
             isAtTop
@@ -24,15 +24,15 @@ export const Header: FC<Props> = ({ items }) => {
               : "border-white bg-opacity-50 dark:border-dark-cobalt dark:bg-opacity-20"
           }`}
         >
-          {items.map(({ key, ...item }, index) => {
+          {items.map((item, index) => {
             return (
-              <li key={key} className={index > 0 ? "ml-4" : ""}>
-                <NavLink key={key} {...item} />
+              <li className={index > 0 ? "ml-4" : ""} key={item._id}>
+                <HeaderLink item={item} />
               </li>
             );
           })}
         </ul>
-      </nav>
+      </nav> : null}
     </header>
   );
 };

@@ -4,7 +4,14 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "env": ["POST_PASSWORD", "PASSWORD_COOKIE_NAME"],
+      "env": [
+        "POST_PASSWORD",
+        "PASSWORD_COOKIE_NAME",
+        "NEXT_PUBLIC_SANITY_PROJECT_ID",
+        "NEXT_PUBLIC_SANITY_DATASET",
+        "SANITY_API_READ_TOKEN",
+        "NEXT_PUBLIC_SITE_URL"
+      ],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
     "lint": {},
