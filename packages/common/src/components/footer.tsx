@@ -1,16 +1,16 @@
 import type { ReactElement } from "react";
-import type { TLink } from "../types";
+import type { TSanityLinkItem } from "../types";
 import { SanityLink } from "./sanity-link";
 import { Link } from "./link";
 
 export interface FooterProps {
-  title?: string;
+  title: string;
   description?: string;
   email?: string;
-  links: TLink[];
+  items: TSanityLinkItem[] | null;
 }
 
-export function Footer({ title, description, email, links }: FooterProps): ReactElement {
+export function Footer({ title, description, email, items }: FooterProps): ReactElement {
   return (
     <footer className="px-4">
       <div className="container">
@@ -30,17 +30,17 @@ export function Footer({ title, description, email, links }: FooterProps): React
                   </Link>
                 ) : null}
               </div>
-              <div className="col-12 mt-8 md:col-4 lg:col-6 md:mt-0">
+              {items ? <div className="col-12 mt-8 md:col-4 lg:col-6 md:mt-0">
                 <ul className="flex justify-between md:flex-col md:items-end">
-                  {links.map((link) => {
+                  {items.map((item) => {
                     return (
-                      <li className="my-2" key={link._id}>
-                        <SanityLink link={link} />
+                      <li className="my-2" key={item._id}>
+                        <SanityLink item={item} />
                       </li>
                     );
                   })}
                 </ul>
-              </div>
+              </div> : null}
             </div>
           </div>
         </div>

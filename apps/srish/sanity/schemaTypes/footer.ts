@@ -1,14 +1,16 @@
 import { defineField, defineType } from "sanity";
+import { navigationItems } from "../fields/navigation-items";
 
 export default defineType({
   name: "footer",
-  title: "Footer",
+  title: "Site Footer",
   type: "document",
   fields: [
     defineField({
       name: "title",
       title: "Title",
       type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "description",
@@ -20,11 +22,13 @@ export default defineType({
       title: "Email",
       type: "string",
     }),
-    defineField({
-      name: "links",
-      title: "Links",
-      type: "array",
-      of: [{ type: "reference", to: { type: "link" } }],
-    }),
-  ]
+    navigationItems,
+  ],
+  preview: {
+    prepare: () => {
+      return {
+        title: "Site Footer",
+      };
+    },
+  },
 });

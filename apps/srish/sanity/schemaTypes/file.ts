@@ -1,8 +1,8 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'link',
-  title: 'External Link',
+  name: 'downloadFile',
+  title: 'File',
   type: 'document',
   fields: [
     defineField({
@@ -12,9 +12,9 @@ export default defineType({
       validation: (Rule) => Rule.required()
     }),
     defineField({
-      name: 'href',
-      title: 'URL',
-      type: 'url',
+      name: 'file',
+      title: 'File',
+      type: 'file',
       validation: (Rule) => Rule.required()
     }),
   ],

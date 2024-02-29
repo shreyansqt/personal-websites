@@ -21,10 +21,38 @@ export type TPost = SanityDocument<{
 }>;
 
 export type TLink = SanityDocument<{
+  _type: "link",
   title: string;
-  href?: string;
-  isExternal?: boolean;
-  downloadFile?: {
-    asset: Asset
+  href: string;
+}>
+
+export type TFile = SanityDocument<{
+  _type: "downloadFile",
+  title: string;
+  file: {
+    asset: Asset;
   };
 }>;
+
+export interface THero {
+  _type: "hero";
+  _key: string;
+  title: string;
+  subtitle: string;
+  description: string;
+}
+
+export interface TPostList {
+  _type: "postList";
+  _key: string;
+  posts: TPost[];
+}
+
+export type TPage = SanityDocument<{
+  _type: "page",
+  path: string;
+  title: string;
+  components: (THero | TPostList)[];
+}>;
+
+export type TSanityLinkItem = TFile | TLink | TPage;

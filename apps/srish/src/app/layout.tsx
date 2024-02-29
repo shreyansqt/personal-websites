@@ -3,7 +3,6 @@ import "./globals.css";
 
 import { Header, type HeaderProps } from "@repo/common/components/header";
 import { Footer, type FooterProps } from "@repo/common/components/footer";
-import { loadQuery } from "@sanity/react-loader";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
@@ -13,10 +12,14 @@ import {
 } from "next/font/google";
 import { draftMode } from "next/headers";
 import type { ReactElement } from "react";
+import { loadQuery } from "@/sanity/lib/store";
 import { FOOTER_QUERY, HEADER_QUERY } from "@/sanity/lib/queries";
 import LiveVisualEditing from "@/sanity/components/live-visual-editing";
 import { Providers } from "./providers";
 
+// Force static rendering and cache the data of a layout or page by
+// causing an error if any components use dynamic functions or uncached data.
+// https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic
 export const dynamic = "error";
 
 const titleFont = BricolageGrotesque({

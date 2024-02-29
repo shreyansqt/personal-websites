@@ -1,23 +1,23 @@
 import type { ReactElement } from "react";
-import type { TLink } from "../types";
+import type { TSanityLinkItem} from '../types';
+import { getHref } from "../utils/get-href";
 import { Link } from "./link";
 
 interface Props {
-  link: TLink;
+  item: TSanityLinkItem;
   className?: string;
 }
 
-export function SanityLink({ link, className }: Props): ReactElement | null {
-  const href = link.downloadFile ? link.downloadFile.asset.url : link.href;
-  if(!href) return null;
+export function SanityLink({ item, className }: Props): ReactElement | null {
+  const href = getHref(item);
   return (
     <Link
-      canDownload={Boolean(link.downloadFile)}
+      canDownload={item._type === "downloadFile"}
       className={className}
       href={href}
-      isExternal={link.isExternal || Boolean(link.downloadFile)}
+      isExternal={item._type === "downloadFile" || item._type === "link"}
     >
-      {link.title}
+      {item.title}
     </Link>
   );
 }

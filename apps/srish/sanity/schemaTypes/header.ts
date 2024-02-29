@@ -1,15 +1,16 @@
-import { defineField, defineType } from "sanity";
+import { defineType } from "sanity";
+import { navigationItems } from "../fields/navigation-items";
 
 export default defineType({
   name: "header",
-  title: "Header",
+  title: "Site Header",
   type: "document",
-  fields: [
-    defineField({
-      name: "links",
-      title: "Links",
-      type: "array",
-      of: [{ type: "reference", to: { type: "link" } }],
-    }),
-  ]
+  fields: [navigationItems],
+  preview: {
+    prepare: () => {
+      return {
+        title: "Site Header",
+      };
+    },
+  },
 });

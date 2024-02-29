@@ -12,7 +12,7 @@ import { locate } from "./sanity/presentation/locate";
 import { schema } from "./sanity/schema";
 import { structure } from "./sanity/desk-structure";
 
-export default defineConfig({
+const config = defineConfig({
   basePath: "/studio",
   projectId,
   dataset,
@@ -45,3 +45,5 @@ export default defineConfig({
     },
   },
 });
+
+export default config;
