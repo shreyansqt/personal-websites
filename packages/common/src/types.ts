@@ -1,6 +1,5 @@
-import type { Image, ImageMetadata, Asset } from "sanity";
+import type { Image, ImageMetadata, Asset, PortableTextBlock } from "sanity";
 import type { SanityDocument } from "next-sanity";
-import type { PortableTextProps } from "@portabletext/react";
 
 export type TSanityImage = Image & {
   asset: {
@@ -17,17 +16,17 @@ export type TPost = SanityDocument<{
   cover: TSanityImage;
   publishedAt: string;
   isPasswordProtected: boolean;
-  body?: PortableTextProps["value"];
+  body?: PortableTextBlock[];
 }>;
 
 export type TLink = SanityDocument<{
-  _type: "link",
+  _type: "link";
   title: string;
   href: string;
-}>
+}>;
 
 export type TFile = SanityDocument<{
-  _type: "downloadFile",
+  _type: "downloadFile";
   title: string;
   file: {
     asset: Asset;
@@ -49,7 +48,7 @@ export interface TPostList {
 }
 
 export type TPage = SanityDocument<{
-  _type: "page",
+  _type: "page";
   path: string;
   title: string;
   components: (THero | TPostList)[];

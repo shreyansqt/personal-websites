@@ -49,14 +49,18 @@ export function ImageGallery({
         />
       )}
 
-      <div className="my-14">
+      <div>
         {chunked.map((imageChunk, chunkIndex) => {
           const totalAspectRatio = imageChunk.reduce((acc, image) => {
             return acc + image.asset.metadata.dimensions.aspectRatio;
           }, 0);
           return (
+            // row
             <div
-              className={`flex ${widened ? "-mx-[240px]" : ""}`}
+              className={classNames(
+                "flex mx-auto",
+                widened ? "w-full" : "w-full xl:w-[70%]"
+              )}
               key={`chunk-${chunkIndex}`}
             >
               {imageChunk.map((image) => {

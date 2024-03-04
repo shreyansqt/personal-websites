@@ -7,7 +7,7 @@ import {
 } from "@heroicons/react/24/solid";
 import classNames from "classnames";
 import { useTheme } from "next-themes";
-import { FC, ReactNode, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Tooltip from "./tooltip";
 import { useClickAway, useMediaQuery } from "@uidotdev/usehooks";
 

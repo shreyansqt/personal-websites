@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactElement} from "react";
+import type { ReactElement } from "react";
 import { useRef, useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -59,11 +59,6 @@ export function Lightbox({
     }
   });
 
-  const initialScale = Math.min(
-    window.innerHeight / image.asset.metadata.dimensions.height,
-    window.innerWidth / image.asset.metadata.dimensions.width
-  );
-
   return (
     <Dialog initialFocus={overlayRef} onClose={handleClose} open static>
       <Dialog.Overlay
@@ -94,9 +89,9 @@ export function Lightbox({
               centerOnInit
               centerZoomedOut
               disablePadding
-              initialScale={initialScale}
+              initialScale={1}
               maxScale={2}
-              minScale={Math.min(0.5, initialScale)}
+              minScale={1}
               panning={{ lockAxisX: false }}
               wheel={{ smoothStep: 0.02 }}
             >
@@ -119,17 +114,21 @@ export function Lightbox({
           {currentIndex > 0 && (
             <button
               className="absolute left-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
-              onClick={() => { changeIndex(currentIndex - 1); }}
+              onClick={() => {
+                changeIndex(currentIndex - 1);
+              }}
               style={{ transform: "translate3d(0, 0, 0)" }}
               type="button"
             >
               <ChevronLeftIcon className="h-6 w-6" />
             </button>
           )}
-          {currentIndex + 1 < (images.length) && (
+          {currentIndex + 1 < images.length && (
             <button
-            className="absolute right-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
-              onClick={() => { changeIndex(currentIndex + 1); }}
+              className="absolute right-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
+              onClick={() => {
+                changeIndex(currentIndex + 1);
+              }}
               style={{ transform: "translate3d(0, 0, 0)" }}
               type="button"
             >
@@ -137,7 +136,7 @@ export function Lightbox({
             </button>
           )}
           <button
-          className="absolute right-3 top-3 flex items-center gap-2 rounded-full bg-black/50 p-3 text-white text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
+            className="absolute right-3 top-3 flex items-center gap-2 rounded-full bg-black/50 p-3 text-white text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
             onClick={handleClose}
             type="button"
           >
