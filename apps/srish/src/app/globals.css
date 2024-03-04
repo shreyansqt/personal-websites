@@ -5,7 +5,7 @@
 *,
 *::before,
 *::after {
-  @apply transition-colors;
+  /* @apply transition-colors duration-100 delay-0; */
 }
 
 h1,
