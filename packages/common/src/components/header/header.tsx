@@ -3,7 +3,7 @@
 import { useWindowScroll } from "@uidotdev/usehooks";
 import type { ReactElement } from "react";
 import type { TSanityLinkItem } from "../../types";
-import { ThemeToggle } from "../ThemeToggle";
+import { ThemeToggle } from "../theme-toggle";
 import { HeaderLink } from "./header-link";
 
 export interface HeaderProps {

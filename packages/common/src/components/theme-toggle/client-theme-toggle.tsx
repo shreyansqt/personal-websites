@@ -5,31 +5,27 @@ import {
   MoonIcon,
   SunIcon,
 } from "@heroicons/react/24/solid";
+import { useClickAway } from "@uidotdev/usehooks";
 import classNames from "classnames";
 import { useTheme } from "next-themes";
-import { FC, useEffect, useState } from "react";
-import Tooltip from "./tooltip";
-import { useClickAway, useMediaQuery } from "@uidotdev/usehooks";
+import { FC, useEffect, useState, type ReactElement } from "react";
+import useDevice from "../../utils/use-device";
+import Tooltip from "../tooltip";
 
 type Theme = "light" | "dark" | "system";
 
-export const ThemeToggle: FC = () => {
-  const isSmallDevice = useMediaQuery("(max-width: 640px)");
-  const [mounted, setMounted] = useState(false);
-  const [isOpen, setIsOpen] = useState(!isSmallDevice);
+export function ClientThemeToggle(): ReactElement {
+  const { isDeviceSm } = useDevice();
+  const [isOpen, setIsOpen] = useState(!isDeviceSm);
   const { theme, setTheme } = useTheme();
 
   const ref = useClickAway<HTMLDivElement>(() => {
-    if (isSmallDevice) setIsOpen(false);
+    if (isDeviceSm) setIsOpen(false);
   });
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    setIsOpen(!isSmallDevice);
-  }, [isSmallDevice]);
+    setIsOpen(!isDeviceSm);
+  }, [isDeviceSm]);
 
   const themes: Theme[] = ["light", "dark", "system"];
 
@@ -45,9 +41,6 @@ export const ThemeToggle: FC = () => {
     system: "System",
   };
 
-  if (!mounted) {
-    return null;
-  }
   return (
     <div
       ref={ref}
@@ -60,7 +53,7 @@ export const ThemeToggle: FC = () => {
         <div
           className={classNames(
             "size-[28px] rounded-full bg-white bg-opacity-70 absolute inset-2 -z-10 transition-transform ease-in-out",
-            isSmallDevice
+            isDeviceSm
               ? {
                   "translate-y-0": theme === "light",
                   "translate-y-[34px]": theme === "dark",
@@ -83,7 +76,7 @@ export const ThemeToggle: FC = () => {
           <Tooltip
             message={title}
             key={t}
-            position={isSmallDevice ? "left" : "bottom"}
+            position={isDeviceSm ? "left" : "bottom"}
             className={classNames(
               !isOpen && !isActive ? "max-h-0" : "max-h-auto"
             )}
@@ -105,4 +98,4 @@ export const ThemeToggle: FC = () => {
       })}
     </div>
   );
-};
+}
