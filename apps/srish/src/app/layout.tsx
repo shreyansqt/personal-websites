@@ -1,13 +1,6 @@
 import "@repo/common/styles.css";
 import "./globals.css";
 
-import LiveVisualEditing from "@/sanity/components/live-visual-editing";
-import {
-  FOOTER_QUERY,
-  HEADER_QUERY,
-  METADATA_QUERY,
-} from "@/sanity/lib/queries";
-import { loadQuery } from "@/sanity/lib/store";
 import { Footer, type FooterProps } from "@repo/common/components/footer";
 import { Header, type HeaderProps } from "@repo/common/components/header";
 import type { TMetadata } from "@repo/common/types";
@@ -20,6 +13,13 @@ import {
 } from "next/font/google";
 import { draftMode } from "next/headers";
 import type { ReactElement } from "react";
+import { loadQuery } from "@/sanity/lib/store";
+import {
+  FOOTER_QUERY,
+  HEADER_QUERY,
+  METADATA_QUERY,
+} from "@/sanity/lib/queries";
+import LiveVisualEditing from "@/sanity/components/live-visual-editing";
 import { Providers } from "./providers";
 
 const titleFont = BricolageGrotesque({

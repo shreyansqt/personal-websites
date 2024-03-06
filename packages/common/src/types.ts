@@ -1,5 +1,5 @@
-import type { Image, ImageMetadata, Asset, PortableTextBlock } from "sanity";
 import type { SanityDocument } from "next-sanity";
+import type { Asset, Image, ImageMetadata, PortableTextBlock } from "sanity";
 
 export type TSanityImage = Image & {
   asset: {
@@ -59,4 +59,12 @@ export type TSanityLinkItem = TFile | TLink | TPage;
 export interface TMetadata {
   title: string;
   description: string;
+  favicon: TSanityImage;
+}
+
+export interface TImageMetadata {
+  contentType: string;
+  id: string;
+  alt?: string;
+  size: { width: number; height: number };
 }

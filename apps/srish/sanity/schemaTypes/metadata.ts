@@ -15,6 +15,11 @@ export default defineType({
       type: "text",
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: "favicon",
+      type: "image",
+      validation: (Rule) => Rule.required(),
+    }),
   ],
   preview: {
     prepare: () => {
@@ -23,4 +28,4 @@ export default defineType({
       };
     },
   },
-})
+});
