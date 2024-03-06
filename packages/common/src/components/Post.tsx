@@ -1,10 +1,13 @@
 import type { ReactElement } from "react";
 import { PortableText } from "@portabletext/react";
+import type { PortableTextBlock } from "sanity";
 import type { TPost } from "../types";
-import { PostPasswordForm } from "./PostPasswordForm";
+import { PostPasswordForm } from "./post-password-form";
 import { SanityImage } from "./sanity-image";
 import { portableTextComponents } from "./portable-text-components";
-import type { PortableTextBlock, PortableTextObject } from "sanity";
+import { Tile } from "./tile";
+import { ImageGallery } from "./image-gallery";
+import type { ImageGalleryProps } from "./image-gallery/image-gallery";
 
 interface Props {
   post: TPost;
@@ -15,7 +18,6 @@ export function Post({ post, showPasswordForm }: Props): ReactElement {
   const bodyArr: PortableTextBlock[][] = [[]];
   let currentIndex = 0;
   if (Array.isArray(post.body)) {
-    let prevType = post.body[0]._type;
     post.body.forEach((block) => {
       if (block._type === "gallery") {
         currentIndex += 1;
@@ -25,62 +27,92 @@ export function Post({ post, showPasswordForm }: Props): ReactElement {
       } else {
         bodyArr[currentIndex] = [...(bodyArr[currentIndex] || []), block];
       }
-      prevType = block._type;
     });
   }
 
   return (
-    <section className="container px-6 py-20">
-      <article className="row justify-center">
-        <div className="relative mb-14 overflow-hidden rounded-lg">
-          <SanityImage className="m-0 w-full" image={post.cover} priority />
-          {showPasswordForm ? (
-            <div className="absolute inset-0 flex items-center justify-center bg-baby-pink bg-opacity-80 backdrop-blur-sm dark:bg-dark-cobalt dark:bg-opacity-80">
-              <PostPasswordForm
-                redirectTo={`/case-studies/${post.slug.current}`}
-              />
-            </div>
+    <article className="px-6 py-20 container">
+      <div className="justify-center row">
+        <div className="lg:col-8 xl:col-7">
+          <div className="relative mb-14 rounded-lg overflow-hidden">
+            <SanityImage className="m-0 w-full" image={post.cover} priority />
+            {showPasswordForm ? (
+              <div className="absolute inset-0 flex justify-center items-center bg-baby-pink dark:bg-dark-cobalt bg-opacity-80 dark:bg-opacity-80 backdrop-blur-sm">
+                <PostPasswordForm
+                  redirectTo={`/case-studies/${post.slug.current}`}
+                />
+              </div>
+            ) : null}
+          </div>
+
+          <h1 className="mb-0 font-bold text-6xl text-dark-cobalt dark:text-baby-pink">
+            {post.title}
+          </h1>
+
+          {post.description ? <p className="mt-4">{post.description}</p> : null}
+
+          {post.timeline || post.company || post.team ? (
+            <Tile className="mt-8 md:mt-10 py-4 md:py-4">
+              <div className="flex md:flex-row flex-col justify-between gap-6 text-center">
+                {post.timeline ? (
+                  <div>
+                    <h5 className="mb-1 text-cobalt uppercase">Timelines</h5>
+                    <p>{post.timeline}</p>
+                  </div>
+                ) : null}
+                {post.company ? (
+                  <div>
+                    <h5 className="mb-1 text-cobalt uppercase">Company</h5>
+                    <div className="flex justify-center items-center">
+                      {post.company.logo ? (
+                        <SanityImage
+                          className="mr-2 w-auto h-4"
+                          image={post.company.logo}
+                        />
+                      ) : null}
+                      <p>{post.company.name}</p>
+                    </div>
+                  </div>
+                ) : null}
+
+                {post.team ? (
+                  <div>
+                    <h5 className="mb-1 text-cobalt uppercase">Team</h5>
+                    <p>{post.team}</p>
+                  </div>
+                ) : null}
+              </div>
+            </Tile>
           ) : null}
         </div>
-
-        <h1 className="mb-0 text-6xl text-dark-cobalt dark:text-baby-pink">
-          {post.title}
-        </h1>
-
-        {post.description ? <p className="mt-4">{post.description}</p> : null}
-
-        {!showPasswordForm && post.body && Array.isArray(post.body) ? (
-          <>
-            <hr />
-            {bodyArr.map((body, index) => {
-              if (!body) return;
-              if (body && body[0]?._type === "gallery") {
+      </div>
+      <div className="justify-center row">
+        {!showPasswordForm && post.body && Array.isArray(post.body)
+          ? bodyArr.map((body) => {
+              if (body[0]?._type === "gallery") {
+                const props = body[0] as unknown as ImageGalleryProps;
                 return (
-                  <div className="mt-8 sm:mt-10 xl:mt-14">
-                    <PortableText
-                      key={body[0]._key}
-                      components={portableTextComponents}
-                      value={body}
-                    />
-                  </div>
-                );
-              } else {
-                return (
-                  <div
-                    key={index}
-                    className="prose sm:prose-lg xl:prose-xl dark:prose-invert mt-8 sm:mt-10 xl:mt-14"
-                  >
-                    <PortableText
-                      components={portableTextComponents}
-                      value={body}
-                    />
-                  </div>
+                  <ImageGallery
+                    className="mt-8 sm:mt-10 xl:mt-14"
+                    key={body[0]._key}
+                    {...props}
+                  />
                 );
               }
-            })}
-          </>
-        ) : null}
-      </article>
-    </section>
+              return (
+                <div
+                  className="lg:col-8 xl:col-7 prose sm:prose-lg xl:prose-xl mt-8 sm:mt-10 xl:mt-14 max-w-none dark:prose-invert"
+                  key={body[0]._key}
+                >
+                  <PortableText
+                    components={portableTextComponents}
+                    value={body}
+                  />
+                </div>
+              );
+            })
+          : null}
+      </div>
+    </article>
   );
 }

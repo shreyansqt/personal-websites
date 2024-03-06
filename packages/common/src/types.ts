@@ -14,6 +14,9 @@ export type TPost = SanityDocument<{
   slug: { current: string };
   description?: string;
   cover: TSanityImage;
+  timeline?: string;
+  team?: string;
+  company?: { name?: string; logo?: TSanityImage };
   publishedAt: string;
   isPasswordProtected: boolean;
   body?: PortableTextBlock[];

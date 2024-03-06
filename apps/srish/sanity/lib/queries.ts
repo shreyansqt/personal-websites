@@ -75,6 +75,16 @@ export const POST_QUERY = groq`*[_type == "post" && slug.current == $slug][0] {
       metadata
     }
   },
+  company {
+    ...,
+    logo {
+      asset->{
+        url,
+        altText,
+        metadata
+      }
+    }
+  },
   body[] {
     ...,
     images[] {

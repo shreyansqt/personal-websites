@@ -14,6 +14,7 @@ export interface ImageGalleryProps {
   hasBackground?: boolean;
   hasShadow?: boolean;
   disableZoom?: boolean;
+  className?: string;
 }
 
 export function ImageGallery({
@@ -23,6 +24,7 @@ export function ImageGallery({
   hasShadow,
   widened,
   disableZoom,
+  className,
 }: ImageGalleryProps): ReactElement {
   const [currentIndex, setCurrentIndex] = useState(-1);
 
@@ -49,7 +51,12 @@ export function ImageGallery({
         />
       )}
 
-      <div>
+      <div
+        className={classNames(
+          widened ? "col-12" : "md:col-8 xl:col-7",
+          className
+        )}
+      >
         {chunked.map((imageChunk, chunkIndex) => {
           const totalAspectRatio = imageChunk.reduce((acc, image) => {
             return acc + image.asset.metadata.dimensions.aspectRatio;
@@ -57,10 +64,7 @@ export function ImageGallery({
           return (
             // row
             <div
-              className={classNames(
-                "flex mx-auto",
-                widened ? "w-full" : "w-full xl:w-[70%]"
-              )}
+              className={classNames("flex mx-auto")}
               key={`chunk-${chunkIndex}`}
             >
               {imageChunk.map((image) => {
@@ -98,12 +102,6 @@ export function ImageGallery({
                         image={image}
                       />
                     </button>
-
-                    {/* {image.caption ? (
-                      <p className="mt-2 text-center text-sm">
-                        {image.caption}
-                      </p>
-                    ) : null} */}
                   </div>
                 );
               })}

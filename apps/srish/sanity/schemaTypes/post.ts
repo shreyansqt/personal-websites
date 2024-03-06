@@ -36,6 +36,33 @@ export default defineType({
       type: "image",
     }),
     defineField({
+      name: "team",
+      title: "Team",
+      type: "string",
+    }),
+    defineField({
+      name: "timeline",
+      title: "Timeline",
+      type: "string",
+    }),
+    defineField({
+      name: "company",
+      title: "Company",
+      type: "object",
+      fields: [
+        defineField({
+          name: "name",
+          title: "Name",
+          type: "string",
+        }),
+        defineField({
+          name: "logo",
+          title: "Logo",
+          type: "image",
+        }),
+      ],
+    }),
+    defineField({
       name: "publishedAt",
       title: "Published at",
       type: "datetime",
@@ -52,6 +79,6 @@ export default defineType({
       title: "title",
       subtitle: "description",
       media: "cover",
-    }
+    },
   },
 });

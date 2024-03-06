@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
 import type { TPost } from "../types";
-import { PostTile } from "./PostTile";
+import { PostTile } from "./post-tile";
 
 interface Props {
   posts: TPost[];
@@ -8,7 +8,7 @@ interface Props {
 
 export function Posts({ posts }: Props): ReactElement {
   return (
-    <div className="px-4 pb-12 sm:px-0 sm:pb-16 lg:pb-20">
+    <div className="px-4 sm:px-0 pb-12 sm:pb-16 lg:pb-20">
       <div className="container">
         <div className="row">
           {posts.map((post, index) => {
