@@ -24,6 +24,7 @@ import { Providers } from "./providers";
 
 const titleFont = BricolageGrotesque({
   subsets: ["latin"],
+  weight: ["400", "700"],
   variable: "--font-title",
   display: "swap",
   adjustFontFallback: false,

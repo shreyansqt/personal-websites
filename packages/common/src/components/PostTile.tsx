@@ -11,10 +11,16 @@ export function PostTile({
   return (
     <Tile className="h-full" image={cover} title={title}>
       {description ? (
-        <p className="mb-4 text-gray dark:text-light-gray">{description}</p>
+        <p className="text-gray text-sm md:text-base dark:text-light-gray">
+          {description}
+        </p>
       ) : null}
 
-      <Link href={`/case-studies/${slug.current}`} scroll>
+      <Link
+        className="mt-3 md:mt-4 font-bold text-sm md:text-base"
+        href={`/case-studies/${slug.current}`}
+        scroll
+      >
         {isPasswordProtected ? "Enter password" : "Continue Reading"}
       </Link>
     </Tile>
