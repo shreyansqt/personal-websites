@@ -11,9 +11,9 @@ import {
 } from "@heroicons/react/20/solid";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import useKeypress from "react-use-keypress";
-import classNames from "classnames";
 import type { TSanityImage } from "../../types";
 import { SanityImage } from "../sanity-image";
+import { cn } from "../../utils/cn";
 import { animationVariants } from "./animationVariants";
 
 interface Props {
@@ -64,13 +64,13 @@ export function Lightbox({
       <Dialog.Overlay
         animate={{ opacity: 1 }}
         as={motion.div}
-        className="fixed inset-0 z-30 cursor-zoom-out bg-black/10 backdrop-blur-2xl"
+        className="z-30 fixed inset-0 bg-black/10 backdrop-blur-2xl cursor-zoom-out"
         initial={{ opacity: 0 }}
         key="backdrop"
         onClick={handleClose}
         ref={overlayRef}
       />
-      <div className="pointer-events-none fixed inset-0 z-50">
+      <div className="z-50 fixed inset-0 pointer-events-none">
         <AnimatePresence custom={direction} initial={false}>
           <motion.div
             animate="center"
@@ -96,11 +96,11 @@ export function Lightbox({
               wheel={{ smoothStep: 0.02 }}
             >
               <TransformComponent
-                contentClass={classNames("pointer-events-auto cursor-grab")}
+                contentClass="pointer-events-auto cursor-grab"
                 wrapperClass="!size-full"
               >
                 <SanityImage
-                  className={classNames("p-4", {
+                  className={cn("p-4", {
                     "bg-baby-pink p-4": hasBackground,
                   })}
                   image={image}
@@ -113,34 +113,34 @@ export function Lightbox({
         <div className="pointer-events-auto">
           {currentIndex > 0 && (
             <button
-              className="absolute left-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
+              className="top-[calc(50%-16px)] left-3 absolute bg-black/50 hover:bg-black/75 backdrop-blur-lg p-3 rounded-full text-white/75 hover:text-white transition focus:outline-none"
               onClick={() => {
                 changeIndex(currentIndex - 1);
               }}
               style={{ transform: "translate3d(0, 0, 0)" }}
               type="button"
             >
-              <ChevronLeftIcon className="h-6 w-6" />
+              <ChevronLeftIcon className="w-6 h-6" />
             </button>
           )}
           {currentIndex + 1 < images.length && (
             <button
-              className="absolute right-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
+              className="top-[calc(50%-16px)] right-3 absolute bg-black/50 hover:bg-black/75 backdrop-blur-lg p-3 rounded-full text-white/75 hover:text-white transition focus:outline-none"
               onClick={() => {
                 changeIndex(currentIndex + 1);
               }}
               style={{ transform: "translate3d(0, 0, 0)" }}
               type="button"
             >
-              <ChevronRightIcon className="h-6 w-6" />
+              <ChevronRightIcon className="w-6 h-6" />
             </button>
           )}
           <button
-            className="absolute right-3 top-3 flex items-center gap-2 rounded-full bg-black/50 p-3 text-white text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
+            className="top-3 right-3 absolute flex items-center gap-2 bg-black/50 hover:bg-black/75 backdrop-blur-lg p-3 rounded-full text-white text-white/75 hover:text-white transition"
             onClick={handleClose}
             type="button"
           >
-            <XMarkIcon className="h-5 w-5" />
+            <XMarkIcon className="w-5 h-5" />
           </button>
         </div>
       </div>

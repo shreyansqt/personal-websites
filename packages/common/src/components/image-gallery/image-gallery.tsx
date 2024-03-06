@@ -2,9 +2,9 @@
 import type { ReactElement } from "react";
 import { useState } from "react";
 import { chunk } from "lodash-es";
-import classNames from "classnames";
 import type { TSanityImage } from "../../types";
 import { SanityImage } from "../sanity-image";
+import { cn } from "../../utils/cn.ts";
 import { Lightbox } from "./lightbox.tsx";
 
 export interface ImageGalleryProps {
@@ -51,22 +51,14 @@ export function ImageGallery({
         />
       )}
 
-      <div
-        className={classNames(
-          widened ? "col-12" : "md:col-8 xl:col-7",
-          className
-        )}
-      >
+      <div className={cn(widened ? "col-12" : "md:col-8 xl:col-7", className)}>
         {chunked.map((imageChunk, chunkIndex) => {
           const totalAspectRatio = imageChunk.reduce((acc, image) => {
             return acc + image.asset.metadata.dimensions.aspectRatio;
           }, 0);
           return (
             // row
-            <div
-              className={classNames("flex mx-auto")}
-              key={`chunk-${chunkIndex}`}
-            >
+            <div className="flex mx-auto" key={`chunk-${chunkIndex}`}>
               {imageChunk.map((image) => {
                 const widthPercent =
                   (image.asset.metadata.dimensions.aspectRatio /
@@ -75,12 +67,12 @@ export function ImageGallery({
 
                 return (
                   <div
-                    className={classNames("m-2 flex flex-col")}
+                    className="flex flex-col m-2"
                     key={image.asset._key}
                     style={{ width: `${widthPercent}%` }}
                   >
                     <button
-                      className={classNames(
+                      className={cn(
                         !disableZoom ? "cursor-zoom-in" : "cursor-default",
                         {
                           "shadow-md": hasShadow,
@@ -93,12 +85,9 @@ export function ImageGallery({
                       type="button"
                     >
                       <SanityImage
-                        className={classNames(
-                          "w-full overflow-hidden rounded-lg m-0",
-                          {
-                            "bg-baby-pink p-4": hasBackground,
-                          }
-                        )}
+                        className={cn("w-full overflow-hidden rounded-lg m-0", {
+                          "bg-baby-pink p-4": hasBackground,
+                        })}
                         image={image}
                       />
                     </button>

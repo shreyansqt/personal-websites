@@ -6,11 +6,12 @@ import {
   SunIcon,
 } from "@heroicons/react/24/solid";
 import { useClickAway } from "@uidotdev/usehooks";
-import classNames from "classnames";
 import { useTheme } from "next-themes";
-import { FC, useEffect, useState, type ReactElement } from "react";
+import { useEffect, useState } from "react";
+import type { FC, ReactElement } from "react";
 import useDevice from "../../utils/use-device";
 import Tooltip from "../tooltip";
+import { cn } from "../../utils/cn";
 
 type Theme = "light" | "dark" | "system";
 
@@ -43,15 +44,15 @@ export function ClientThemeToggle(): ReactElement {
 
   return (
     <div
-      ref={ref}
-      className={classNames(
+      className={cn(
         "pointer-events-auto absolute right-2 top-2 flex flex-col sm:flex-row bg-baby-peach dark:bg-cobalt bg-opacity-80 dark:bg-opacity-80 p-2 rounded-full backdrop-blur-sm",
         { "gap-1.5": isOpen }
       )}
+      ref={ref}
     >
-      {isOpen && (
+      {isOpen ? (
         <div
-          className={classNames(
+          className={cn(
             "size-[28px] rounded-full bg-white bg-opacity-70 absolute inset-2 -z-10 transition-transform ease-in-out",
             isDeviceSm
               ? {
@@ -67,29 +68,28 @@ export function ClientThemeToggle(): ReactElement {
             "dark:bg-black dark:bg-opacity-20"
           )}
         />
-      )}
+      ) : null}
       {themes.map((t) => {
         const Icon = iconMap[t];
         const title = titleMap[t];
         const isActive = theme === t;
         return (
           <Tooltip
-            message={title}
+            className={cn(!isOpen && !isActive ? "max-h-0" : "max-h-auto")}
             key={t}
+            message={title}
             position={isDeviceSm ? "left" : "bottom"}
-            className={classNames(
-              !isOpen && !isActive ? "max-h-0" : "max-h-auto"
-            )}
           >
             <button
+              className={cn(
+                "rounded-full bg-white bg-opacity-0 p-1.5 hover:bg-opacity-50 text-cobalt",
+                "dark:text-baby-yellow dark:bg-black dark:bg-opacity-0 dark:hover:bg-opacity-10"
+              )}
               onClick={() => {
                 setIsOpen(true);
                 setTheme(t);
               }}
-              className={classNames(
-                "rounded-full bg-white bg-opacity-0 p-1.5 hover:bg-opacity-50 text-cobalt",
-                "dark:text-baby-yellow dark:bg-black dark:bg-opacity-0 dark:hover:bg-opacity-10"
-              )}
+              type="button"
             >
               {!isOpen && !isActive ? null : <Icon className="size-4" />}
             </button>

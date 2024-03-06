@@ -34,24 +34,22 @@ export function Post({ post, showPasswordForm }: Props): ReactElement {
     <article className="px-6 py-20 container">
       <div className="justify-center row">
         <div className="lg:col-8 xl:col-7">
-          <div className="relative mb-14 rounded-lg overflow-hidden">
+          <div className="relative rounded-lg overflow-hidden">
             <SanityImage className="m-0 w-full" image={post.cover} priority />
             {showPasswordForm ? (
-              <div className="absolute inset-0 flex justify-center items-center bg-baby-pink dark:bg-dark-cobalt bg-opacity-80 dark:bg-opacity-80 backdrop-blur-sm">
-                <PostPasswordForm
-                  redirectTo={`/case-studies/${post.slug.current}`}
-                />
-              </div>
+              <PostPasswordForm
+                redirectTo={`/case-studies/${post.slug.current}`}
+              />
             ) : null}
           </div>
 
-          <h1 className="mb-0 font-bold text-6xl text-dark-cobalt dark:text-baby-pink">
+          <h1 className="mt-14 font-bold text-6xl text-dark-cobalt dark:text-baby-pink">
             {post.title}
           </h1>
 
           {post.description ? <p className="mt-4">{post.description}</p> : null}
 
-          {post.timeline || post.company || post.team ? (
+          {!showPasswordForm && (post.timeline || post.company || post.team) ? (
             <Tile className="mt-8 md:mt-10 py-4 md:py-4">
               <div className="flex md:flex-row flex-col justify-between gap-6 text-center">
                 {post.timeline ? (

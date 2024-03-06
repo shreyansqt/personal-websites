@@ -1,24 +1,21 @@
 "use client";
 
-import type { QueryResponseInitial} from "@sanity/react-loader";
+import type { QueryResponseInitial } from "@sanity/react-loader";
 import { useQuery } from "@sanity/react-loader";
-import type { QueryParams, SanityDocument } from "next-sanity";
-import { Post } from "@repo/common/components/Post";
+import type { QueryParams } from "next-sanity";
+import { Post } from "@repo/common/components/post";
 import type { TPost } from "@repo/common/types";
+import type { ReactElement } from "react";
 import { POST_QUERY } from "@/sanity/lib/queries";
 
-export default function PostPreview({
+export function PostPreview({
   initial,
-  params
+  params,
 }: {
   initial: QueryResponseInitial<TPost>;
-  params: QueryParams
-}) {
-  const { data } = useQuery<TPost | null>(
-    POST_QUERY,
-    params,
-    { initial }
-  );
+  params: QueryParams;
+}): ReactElement {
+  const { data } = useQuery<TPost | null>(POST_QUERY, params, { initial });
 
   return data ? (
     <Post post={data} />

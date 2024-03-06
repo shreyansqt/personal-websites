@@ -1,10 +1,10 @@
 "use client";
 
-import type { QueryResponseInitial} from "@sanity/react-loader";
+import type { QueryResponseInitial } from "@sanity/react-loader";
 import { useQuery } from "@sanity/react-loader";
 import type { ReactElement } from "react";
 import type { TPost } from "@repo/common/types";
-import {Posts} from '@repo/common/components/Posts'
+import { Posts } from "@repo/common/components/posts";
 import { POSTS_QUERY } from "@/sanity/lib/queries";
 
 export default function PostsPreview({
@@ -12,11 +12,7 @@ export default function PostsPreview({
 }: {
   initial: QueryResponseInitial<TPost[]>;
 }): ReactElement {
-  const { data } = useQuery<TPost[] | null>(
-    POSTS_QUERY,
-    {},
-    { initial }
-  );
+  const { data } = useQuery<TPost[] | null>(POSTS_QUERY, {}, { initial });
 
   return data ? (
     <Posts posts={data} />

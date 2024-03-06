@@ -1,7 +1,12 @@
 "use client";
 
-import classNames from "classnames";
-import React, { ReactNode, useState, type HTMLAttributes } from "react";
+import {
+  useState,
+  type ReactNode,
+  type HTMLAttributes,
+  type ReactElement,
+} from "react";
+import { cn } from "../utils/cn";
 
 type TooltipProps = HTMLAttributes<HTMLDivElement> & {
   message: string;
@@ -15,22 +20,26 @@ export default function Tooltip({
   position = "top",
   className,
   ...restProps
-}: TooltipProps) {
+}: TooltipProps): ReactElement {
   const [show, setShow] = useState(false);
   return (
     <div
-      className={classNames("relative group", { "z-10": show }, className)}
+      className={cn("relative group", { "z-10": show }, className)}
       {...restProps}
     >
       <span
         className="block"
-        onMouseEnter={() => setShow(true)}
-        onMouseLeave={() => setShow(false)}
+        onMouseEnter={() => {
+          setShow(true);
+        }}
+        onMouseLeave={() => {
+          setShow(false);
+        }}
       >
         {children}
       </span>
       <div
-        className={classNames("absolute whitespace-nowrap group-hover:flex", {
+        className={cn("absolute whitespace-nowrap group-hover:flex", {
           hidden: !show,
           "left-[50%] translate-x-[-50%]":
             position === "top" || position === "bottom",
@@ -42,11 +51,11 @@ export default function Tooltip({
           "right-full mr-2": position === "left",
         })}
       >
-        <span className="relative p-2 text-xs leading-none text-baby-pink whitespace-no-wrap bg-dark-cobalt rounded dark:bg-baby-pink dark:text-dark-cobalt">
+        <span className="relative bg-dark-cobalt dark:bg-baby-pink p-2 rounded text-baby-pink text-xs dark:text-dark-cobalt leading-none whitespace-no-wrap">
           {message}
         </span>
         <div
-          className={classNames(
+          className={cn(
             "w-2 h-2 rotate-45 bg-dark-cobalt dark:bg-baby-pink absolute",
             {
               "left-[50%] translate-x-[-50%]":

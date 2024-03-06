@@ -1,4 +1,4 @@
-import { Post } from "@repo/common/components/Post";
+import { Post } from "@repo/common/components/post";
 import type { TPost, TMetadata } from "@repo/common/types";
 import type { ReactElement } from "react";
 import { draftMode } from "next/headers";
@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import { METADATA_QUERY, POSTS_QUERY, POST_QUERY } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
 import { loadQuery } from "@/sanity/lib/store";
-import PostPreview from "@/sanity/components/post-preview";
+import { PostPreview } from "@/sanity/components/post-preview";
 import { token } from "@/sanity/lib/token";
 
 interface PageProps {

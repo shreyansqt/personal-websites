@@ -1,6 +1,6 @@
 import type { ReactElement, ReactNode } from "react";
-import classNames from "classnames";
 import type { TSanityImage } from "../types";
+import { cn } from "../utils/cn";
 import { SanityImage } from "./sanity-image";
 
 interface Props {
@@ -18,7 +18,7 @@ export function Tile({
 }: Props): ReactElement {
   return (
     <div
-      className={classNames(
+      className={cn(
         "rounded-[60px] relative flex flex-col justify-between backdrop-blur-sm border overflow-hidden px-8 md:px-10 py-9 md:py-12",
         "bg-white bg-opacity-50 border-white",
         "dark:bg-black dark:bg-opacity-10 dark:border-black dark:border-opacity-20",
