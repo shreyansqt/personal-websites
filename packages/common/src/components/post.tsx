@@ -33,7 +33,7 @@ export function Post({ post, showPasswordForm }: Props): ReactElement {
   return (
     <article className="px-6 py-20 container">
       <div className="justify-center row">
-        <div className="lg:col-8 xl:col-7">
+        <div className="lg:col-9 xl:col-7">
           <div className="relative rounded-lg overflow-hidden">
             <SanityImage className="m-0 w-full" image={post.cover} priority />
             {showPasswordForm ? (
@@ -43,7 +43,7 @@ export function Post({ post, showPasswordForm }: Props): ReactElement {
             ) : null}
           </div>
 
-          <h1 className="mt-14 font-bold text-6xl text-dark-cobalt dark:text-baby-pink">
+          <h1 className="mt-14 font-bold text-4xl text-dark-cobalt md:text-5xl xl:text-6xl dark:text-baby-pink">
             {post.title}
           </h1>
 
@@ -54,7 +54,7 @@ export function Post({ post, showPasswordForm }: Props): ReactElement {
               <div className="flex md:flex-row flex-col justify-between gap-6 text-center">
                 {post.timeline ? (
                   <div>
-                    <h5 className="mb-1 text-cobalt uppercase">Timelines</h5>
+                    <h5 className="mb-1 text-cobalt uppercase">Timeline</h5>
                     <p>{post.timeline}</p>
                   </div>
                 ) : null}
@@ -99,7 +99,7 @@ export function Post({ post, showPasswordForm }: Props): ReactElement {
               }
               return (
                 <div
-                  className="lg:col-8 xl:col-7 prose sm:prose-lg xl:prose-xl mt-8 sm:mt-10 xl:mt-14 max-w-none dark:prose-invert"
+                  className="lg:col-9 xl:col-7 prose sm:prose-lg xl:prose-xl mt-8 sm:mt-10 xl:mt-14 max-w-none dark:prose-invert"
                   key={body[0]._key}
                 >
                   <PortableText

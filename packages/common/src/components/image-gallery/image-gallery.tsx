@@ -51,7 +51,7 @@ export function ImageGallery({
         />
       )}
 
-      <div className={cn(widened ? "col-12" : "md:col-8 xl:col-7", className)}>
+      <div className={cn(widened ? "col-12" : "lg:col-9 xl:col-7", className)}>
         {chunked.map((imageChunk, chunkIndex) => {
           const totalAspectRatio = imageChunk.reduce((acc, image) => {
             return acc + image.asset.metadata.dimensions.aspectRatio;
