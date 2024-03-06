@@ -29,8 +29,23 @@ export default async function Icon({
 }): Promise<ImageResponse> {
   const { data } = await loadQuery<TMetadata>(METADATA_QUERY);
   const size = { width: sizes[id], height: sizes[id] };
-  // eslint-disable-next-line -- nextjs rules don't apply to favicons
-  return new ImageResponse(<img src={data.favicon.asset.url} {...size} />, {
-    ...size,
-  });
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          borderRadius: size.width / 2,
+          overflow: "hidden",
+          height: "100%",
+          width: "100%",
+          display: "flex",
+        }}
+      >
+        {/* eslint-disable-next-line -- nextjs rules don't apply to favicons */}
+        <img src={data.favicon.asset.url} {...size} />
+      </div>
+    ),
+    {
+      ...size,
+    }
+  );
 }
