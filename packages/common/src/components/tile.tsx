@@ -20,8 +20,8 @@ export function Tile({
     <div
       className={cn(
         "rounded-[60px] relative flex flex-col justify-between backdrop-blur-sm border overflow-hidden px-8 md:px-10 py-9 md:py-12",
-        "bg-white bg-opacity-50 border-white",
-        "dark:bg-black dark:bg-opacity-10 dark:border-black dark:border-opacity-20",
+        "bg-white bg-opacity-70 border-white",
+        "dark:bg-black dark:bg-opacity-20 dark:border-black dark:border-opacity-20",
         className
       )}
     >
