@@ -59,6 +59,11 @@ export function Lightbox({
     }
   });
 
+  const initialScale = Math.min(
+    window.innerWidth / image.asset.metadata.dimensions.width,
+    window.innerHeight / image.asset.metadata.dimensions.height
+  );
+
   return (
     <Dialog initialFocus={overlayRef} onClose={handleClose} open static>
       <Dialog.Overlay
@@ -89,22 +94,26 @@ export function Lightbox({
               centerOnInit
               centerZoomedOut
               disablePadding
-              initialScale={1}
+              initialScale={initialScale}
               maxScale={2}
-              minScale={1}
+              minScale={initialScale}
               panning={{ lockAxisX: false }}
               wheel={{ smoothStep: 0.02 }}
             >
               <TransformComponent
                 contentClass="pointer-events-auto cursor-grab"
                 wrapperClass="!size-full"
+                wrapperStyle={{
+                  transform: "translate3d(0,0,0)",
+                }}
               >
                 <SanityImage
-                  className={cn("p-4", {
-                    "bg-baby-pink p-4": hasBackground,
+                  className={cn("p-4 max-w-none", {
+                    "bg-baby-pink": hasBackground,
                   })}
                   image={image}
                   priority
+                  unoptimized
                 />
               </TransformComponent>
             </TransformWrapper>
