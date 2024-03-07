@@ -39,9 +39,10 @@ export type TFile = SanityDocument<{
 export interface THero {
   _type: "hero";
   _key: string;
+  image?: TSanityImage;
   title: string;
-  subtitle: string;
-  description: string;
+  subtitle?: string;
+  description?: PortableTextBlock[];
 }
 
 export interface TPostList {

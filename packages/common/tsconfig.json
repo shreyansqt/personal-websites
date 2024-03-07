@@ -1,6 +1,6 @@
 {
   "extends": "@repo/typescript-config/nextjs.json",
-  "include": ["."],
+  "include": [".", "src/.ts", "../tailwind-config/tw-bootstrap-grid-optimizer.d.ts", "../tailwind-config/node_modules/tw-bootstrap-grid-optimizer.d.ts"],
   "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {
     "plugins": [{ "name": "typescript-plugin-css-modules" }],

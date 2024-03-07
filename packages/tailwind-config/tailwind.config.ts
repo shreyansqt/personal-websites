@@ -2,6 +2,7 @@ import type { Config } from "tailwindcss";
 
 // We want each package to be responsible for its own content.
 const config: Omit<Config, "content"> = {
+  corePlugins: { container: false },
   darkMode: "class",
   theme: {
     colors: {
@@ -37,7 +38,7 @@ const config: Omit<Config, "content"> = {
     },
   },
   plugins: [
-    require("tw-bootstrap-grid-optimizer"),
+    require("tailwind-bootstrap-grid")({ gridGutterWidth: "2rem" }),
     require("@tailwindcss/typography"),
   ],
 };

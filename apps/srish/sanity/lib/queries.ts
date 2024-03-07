@@ -42,6 +42,12 @@ export const getPageQuery = (
   title,
   components[] {
     ...,
+    image {
+      asset->{
+        url,
+        metadata
+      }
+    }
   },
   openGraph {
     ...,

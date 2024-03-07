@@ -5,6 +5,10 @@ export default defineType({
   type: "object",
   fields: [
     defineField({
+      name: "image",
+      type: "image",
+    }),
+    defineField({
       name: "title",
       type: "string",
       validation: (S) => S.required(),
@@ -15,7 +19,7 @@ export default defineType({
     }),
     defineField({
       name: "description",
-      type: "text",
+      type: "blockContent",
     }),
   ],
   preview: {
