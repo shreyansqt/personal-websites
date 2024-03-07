@@ -43,6 +43,15 @@ export const getPageQuery = (
   components[] {
     ...,
   },
+  openGraph {
+    ...,
+    image {
+      asset -> {
+        url,
+        metadata
+      }
+    }
+  }
 }`;
 
 export const POSTS_QUERY = groq`*[_type == "post" && defined(slug)] {
@@ -50,7 +59,6 @@ export const POSTS_QUERY = groq`*[_type == "post" && defined(slug)] {
   cover {
     asset->{
       url,
-      altText,
       metadata
     }
   }
@@ -61,7 +69,6 @@ export const PROTECTED_POSTS_QUERY = groq`*[_type == "post" && defined(slug) && 
   cover {
     asset->{
       url,
-      altText,
       metadata
     }
   }
@@ -80,7 +87,6 @@ export const POST_QUERY = groq`*[_type == "post" && slug.current == $slug][0] {
     logo {
       asset->{
         url,
-        altText,
         metadata
       }
     }
@@ -91,7 +97,6 @@ export const POST_QUERY = groq`*[_type == "post" && slug.current == $slug][0] {
       ...,
       asset->{
         url,
-        altText,
         title,
         metadata
       }

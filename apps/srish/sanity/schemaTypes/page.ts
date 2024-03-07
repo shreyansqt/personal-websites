@@ -15,6 +15,23 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "openGraph",
+      title: "Open Graph Metadata",
+      type: "object",
+      fields: [
+        defineField({
+          name: "description",
+          title: "Description",
+          type: "text",
+        }),
+        defineField({
+          name: "image",
+          title: "Image",
+          type: "image",
+        }),
+      ],
+    }),
+    defineField({
       name: "components",
       type: "array",
       of: [

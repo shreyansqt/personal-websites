@@ -55,6 +55,10 @@ export type TPage = SanityDocument<{
   path: string;
   title: string;
   components: (THero | TPostList)[];
+  openGraph?: {
+    description?: string;
+    image?: TSanityImage;
+  };
 }>;
 
 export type TSanityLinkItem = TFile | TLink | TPage;

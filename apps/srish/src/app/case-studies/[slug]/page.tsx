@@ -1,13 +1,14 @@
 import { Post } from "@repo/common/components/post";
-import type { TPost, TMetadata } from "@repo/common/types";
+import type { TPost } from "@repo/common/types";
 import type { ReactElement } from "react";
 import { draftMode } from "next/headers";
-import type { Metadata } from "next";
-import { METADATA_QUERY, POSTS_QUERY, POST_QUERY } from "@/sanity/lib/queries";
+import type { Metadata, ResolvingMetadata } from "next";
+import { POSTS_QUERY, POST_QUERY } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
 import { loadQuery } from "@/sanity/lib/store";
 import { PostPreview } from "@/sanity/components/post-preview";
 import { token } from "@/sanity/lib/token";
+import { getPostMetadata } from "@/src/utils/get-post-metadata";
 
 interface PageProps {
   params: {
@@ -15,14 +16,11 @@ interface PageProps {
   };
 }
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
-  const { data: post } = await loadQuery<TPost>(POST_QUERY, params);
-  const { data: defaultMetadata } = await loadQuery<TMetadata>(METADATA_QUERY);
-  return {
-    title: `${post.title} | Case Study | ${defaultMetadata.title}`,
-  };
+export async function generateMetadata(
+  { params }: PageProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  return getPostMetadata(params.slug, parent);
 }
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {

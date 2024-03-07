@@ -41,6 +41,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: data.title,
     description: data.description,
+    metadataBase: new URL("https://srish.me"),
   };
 }
 

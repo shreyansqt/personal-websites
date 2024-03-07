@@ -58,7 +58,7 @@ export function ImageGallery({
           }, 0);
           return (
             // row
-            <div className="flex mx-auto" key={`chunk-${chunkIndex}`}>
+            <article className="flex mx-auto" key={`chunk-${chunkIndex}`}>
               {imageChunk.map((image) => {
                 const widthPercent =
                   (image.asset.metadata.dimensions.aspectRatio /
@@ -68,7 +68,7 @@ export function ImageGallery({
                 return (
                   <div
                     className="flex flex-col m-2"
-                    key={image.asset._key}
+                    key={image.asset.url}
                     style={{ width: `${widthPercent}%` }}
                   >
                     <button
@@ -94,7 +94,7 @@ export function ImageGallery({
                   </div>
                 );
               })}
-            </div>
+            </article>
           );
         })}
 
