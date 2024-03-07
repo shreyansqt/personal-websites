@@ -9,6 +9,7 @@ import hero from "./schemaTypes/hero";
 import postList from "./schemaTypes/post-list";
 import file from "./schemaTypes/file";
 import metadata from "./schemaTypes/metadata";
+import { values } from "./schemaTypes/values";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -21,6 +22,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     hero,
     postList,
     file,
-    metadata
+    metadata,
+    values,
   ],
 };

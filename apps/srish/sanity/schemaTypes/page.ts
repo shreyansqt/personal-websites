@@ -41,6 +41,9 @@ export default defineType({
         defineArrayMember({
           type: "postList",
         }),
+        defineArrayMember({
+          type: "values",
+        }),
       ],
     }),
   ],

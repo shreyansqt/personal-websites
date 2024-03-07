@@ -10,17 +10,22 @@ export interface FooterProps {
   items: TSanityLinkItem[] | null;
 }
 
-export function Footer({ title, description, email, items }: FooterProps): ReactElement {
+export function Footer({
+  title,
+  description,
+  email,
+  items,
+}: FooterProps): ReactElement {
   return (
     <footer className="px-4">
       <div className="container">
-        <div className="row justify-center">
+        <div className="justify-center row">
           <div className="col-12 md:col-10 lg:col-8">
-            <div className="row items-center border-t border-t-baby-peach py-8 dark:border-t-cobalt md:py-14">
+            <div className="items-center py-8 md:py-14 border-t border-t-baby-peach dark:border-t-cobalt row">
               <div className="col-12 md:col-8 lg:col-6">
-                {title ? <h4 className="text-bold text-2xl">{title}</h4> : null}
+                <h4 className="font-bold text-2xl">{title}</h4>
                 {description ? (
-                  <p className="mt-2 text-gray dark:text-light-gray">
+                  <p className="mt-2 text-gray text-sm md:text-base dark:text-light-gray">
                     {description}
                   </p>
                 ) : null}
@@ -30,17 +35,19 @@ export function Footer({ title, description, email, items }: FooterProps): React
                   </Link>
                 ) : null}
               </div>
-              {items ? <div className="col-12 mt-8 md:col-4 lg:col-6 md:mt-0">
-                <ul className="flex justify-between md:flex-col md:items-end">
-                  {items.map((item) => {
-                    return (
-                      <li className="my-2" key={item._id}>
-                        <SanityLink item={item} />
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div> : null}
+              {items ? (
+                <div className="mt-8 col-12 md:col-4 lg:col-6 md:mt-0">
+                  <ul className="flex md:flex-col justify-between md:items-end">
+                    {items.map((item) => {
+                      return (
+                        <li className="my-2" key={item._id}>
+                          <SanityLink item={item} />
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ) : null}
             </div>
           </div>
         </div>

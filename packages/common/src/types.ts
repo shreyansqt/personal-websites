@@ -76,3 +76,18 @@ export interface TImageMetadata {
   alt?: string;
   size: { width: number; height: number };
 }
+
+export interface TValue {
+  _key: string;
+  icon: TSanityImage;
+  title: string;
+  description?: PortableTextBlock[];
+}
+
+export interface TValues {
+  _type: "values";
+  _key: string;
+  title: string;
+  description?: PortableTextBlock[];
+  values: TValue[];
+}

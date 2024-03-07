@@ -47,6 +47,15 @@ export const getPageQuery = (
         url,
         metadata
       }
+    },
+    values[] {
+      ...,
+      icon {
+        asset->{
+          url,
+          metadata
+        }
+      }
     }
   },
   openGraph {
